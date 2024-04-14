@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000" />
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top" />
+  
+  
+  <title>辗转相除法证明 | Hexo</title>
+  <meta name="description" content="辗转相除法的证明 取a&gt;ba&gt;ba&gt;b，记两数的最大公约数为gcd(a,b)gcd(a,b)gcd(a,b)。 ①记c&#x3D;gcd(a,b)c&#x3D;gcd(a,b)c&#x3D;gcd(a,b)，若a&#x3D;mca&#x3D;mca&#x3D;mc，b&#x3D;ncb&#x3D;ncb&#x3D;nc，则m,nm,nm,n互质。 证明： ​若m，n不是互质的，必然存在ppp使得m&#x3D;t1pm &#x3D; t_{1}pm&#x3D;t​1​​p，n&#x3D;t2pn&#x3D;t_{2}">
+<meta property="og:type" content="article">
+<meta property="og:title" content="辗转相除法证明">
+<meta property="og:url" content="http://example.com/2024/04/12/%E8%BE%97%E8%BD%AC%E7%9B%B8%E9%99%A4%E6%B3%95%E8%AF%81%E6%98%8E/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="辗转相除法的证明 取a&gt;ba&gt;ba&gt;b，记两数的最大公约数为gcd(a,b)gcd(a,b)gcd(a,b)。 ①记c&#x3D;gcd(a,b)c&#x3D;gcd(a,b)c&#x3D;gcd(a,b)，若a&#x3D;mca&#x3D;mca&#x3D;mc，b&#x3D;ncb&#x3D;ncb&#x3D;nc，则m,nm,nm,n互质。 证明： ​若m，n不是互质的，必然存在ppp使得m&#x3D;t1pm &#x3D; t_{1}pm&#x3D;t​1​​p，n&#x3D;t2pn&#x3D;t_{2}">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-04-12T13:19:49.131Z">
+<meta property="article:modified_time" content="2024-04-14T07:08:43.705Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  <!-- Canonical links -->
+  <link rel="canonical" href="http://example.com/2024/04/12/%E8%BE%97%E8%BD%AC%E7%9B%B8%E9%99%A4%E6%B3%95%E8%AF%81%E6%98%8E/index.html">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png" type="image/x-icon">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    <link href="//cdn.jsdelivr.net/npm/katex@0.9.0/dist/katex.min.css" rel="stylesheet">
+  
+  
+  
+  
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+
+<body class="main-center theme-blue" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://github.com/qunhuany" target="_blank">
+          <img class="img-circle img-rotate" src="/images/avatar.jpg" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">Dsen</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">美团外卖，送啥都快</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> China</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="Search" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="Type something..." x-webkit-speech />
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav menu-highlight">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">Home</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            
+            <i class="icon icon-archives-fill"></i>
+            
+            <span class="menu-title">Archives</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories">
+            
+            <i class="icon icon-folder"></i>
+            
+            <span class="menu-title">Categories</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags">
+            
+            <i class="icon icon-tags"></i>
+            
+            <span class="menu-title">Tags</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-repository">
+          <a href="/repository">
+            
+            <i class="icon icon-project"></i>
+            
+            <span class="menu-title">Repository</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-books">
+          <a href="/books">
+            
+            <i class="icon icon-book-fill"></i>
+            
+            <span class="menu-title">Books</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-links">
+          <a href="/links">
+            
+            <i class="icon icon-friendship"></i>
+            
+            <span class="menu-title">Links</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">About</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/qunhuany" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">Board</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <p>测试一下</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget-body">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Math/">Math</a><span class="category-list-count">2</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget-body">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%94%E8%A7%92%E6%A0%BC/" rel="tag">五角格</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BB%A3%E6%95%B0/" rel="tag">代数</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BB%A3%E6%95%B0%E5%B8%B8%E5%85%83/" rel="tag">代数常元</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BB%A3%E6%95%B0%E6%A0%BC/" rel="tag">代数格</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%81%8F%E5%BA%8F%E5%85%B3%E7%B3%BB/" rel="tag">偏序关系</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%85%83%E7%B4%A0%E7%9A%84%E9%98%B6/" rel="tag">元素的阶</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%88%86%E9%85%8D%E6%A0%BC/" rel="tag">分配格</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%88%92%E5%88%86/" rel="tag">划分</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8D%8A%E7%BE%A4/" rel="tag">半群</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%90%8C%E4%BD%99%E5%85%B3%E7%B3%BB/" rel="tag">同余关系</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%90%8C%E6%80%81/" rel="tag">同态</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%90%8C%E6%80%81%E6%A0%B8/" rel="tag">同态核</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%90%8C%E6%80%81%E8%B1%A1/" rel="tag">同态象</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%93%88%E6%96%AF%E5%9B%BE/" rel="tag">哈斯图</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%95%86%E4%BB%A3%E6%95%B0/" rel="tag">商代数</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9F%9F/" rel="tag">域</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%90%E4%BB%A3%E6%95%B0/" rel="tag">子代数</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%90%E5%8D%8A%E7%BE%A4/" rel="tag">子半群</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%90%E6%A0%BC/" rel="tag">子格</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%90%E7%8B%AC%E5%BC%82%E7%82%B9/" rel="tag">子独异点</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%90%E7%BE%A4/" rel="tag">子群</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AF%B9%E5%81%B6%E6%80%A7%E5%8E%9F%E7%90%86/" rel="tag">对偶性原理</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%81%E9%97%AD/" rel="tag">封闭</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B8%83%E5%B0%94%E6%A0%BC/" rel="tag">布尔格</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B9%B3%E5%87%A1%E5%AD%90%E7%BE%A4/" rel="tag">平凡子群</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BE%AA%E7%8E%AF%E7%8B%AC%E5%BC%82%E7%82%B9/" rel="tag">循环独异点</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BE%AA%E7%8E%AF%E7%BE%A4/" rel="tag">循环群</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8B%89%E6%A0%BC%E6%9C%97%E6%97%A5%E5%AE%9A%E7%90%86/" rel="tag">拉格朗日定理</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%98%A0%E5%B0%84/" rel="tag">映射</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%80%E5%A4%A7%E4%B8%8B%E7%95%8C/" rel="tag">最大下界</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%80%E5%B0%8F%E4%B8%8A%E7%95%8C/" rel="tag">最小上界</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%89%E7%95%8C%E6%A0%BC/" rel="tag">有界格</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%89%E8%A1%A5%E6%A0%BC/" rel="tag">有补格</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%89%E9%99%90%E7%BE%A4/" rel="tag">有限群</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A0%BC/" rel="tag">格</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A0%BC%E5%90%8C%E6%80%81/" rel="tag">格同态</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A8%A1%E6%A0%BC/" rel="tag">模格</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%8B%AC%E5%BC%82%E7%82%B9/" rel="tag">独异点</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%8E%AF/" rel="tag">环</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%94%9F%E6%88%90/" rel="tag">生成</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AD%89%E4%BB%B7%E7%B1%BB/" rel="tag">等价类</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BE%A4/" rel="tag">群</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BE%A4%E5%90%8C%E6%80%81/" rel="tag">群同态</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BE%A4%E7%9A%84%E9%98%B6%E6%95%B0/" rel="tag">群的阶数</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%BD%BD%E4%BD%93/" rel="tag">载体</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%92%BB%E7%9F%B3%E6%A0%BC/" rel="tag">钻石格</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%98%BF%E8%B4%9D%E5%B0%94%E7%BE%A4-%E4%BA%A4%E6%8D%A2%E7%BE%A4/" rel="tag">阿贝尔群(交换群)</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%99%AA%E9%9B%86/" rel="tag">陪集</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%B8%BD%E5%B7%A2%E5%8E%9F%E7%90%86/" rel="tag">鸽巢原理</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget-body tagcloud">
+      <a href="/tags/%E4%BA%94%E8%A7%92%E6%A0%BC/" style="font-size: 13px;">五角格</a> <a href="/tags/%E4%BB%A3%E6%95%B0/" style="font-size: 13px;">代数</a> <a href="/tags/%E4%BB%A3%E6%95%B0%E5%B8%B8%E5%85%83/" style="font-size: 13px;">代数常元</a> <a href="/tags/%E4%BB%A3%E6%95%B0%E6%A0%BC/" style="font-size: 13px;">代数格</a> <a href="/tags/%E5%81%8F%E5%BA%8F%E5%85%B3%E7%B3%BB/" style="font-size: 13px;">偏序关系</a> <a href="/tags/%E5%85%83%E7%B4%A0%E7%9A%84%E9%98%B6/" style="font-size: 13px;">元素的阶</a> <a href="/tags/%E5%88%86%E9%85%8D%E6%A0%BC/" style="font-size: 13px;">分配格</a> <a href="/tags/%E5%88%92%E5%88%86/" style="font-size: 13px;">划分</a> <a href="/tags/%E5%8D%8A%E7%BE%A4/" style="font-size: 13px;">半群</a> <a href="/tags/%E5%90%8C%E4%BD%99%E5%85%B3%E7%B3%BB/" style="font-size: 13px;">同余关系</a> <a href="/tags/%E5%90%8C%E6%80%81/" style="font-size: 13px;">同态</a> <a href="/tags/%E5%90%8C%E6%80%81%E6%A0%B8/" style="font-size: 13px;">同态核</a> <a href="/tags/%E5%90%8C%E6%80%81%E8%B1%A1/" style="font-size: 13px;">同态象</a> <a href="/tags/%E5%93%88%E6%96%AF%E5%9B%BE/" style="font-size: 13px;">哈斯图</a> <a href="/tags/%E5%95%86%E4%BB%A3%E6%95%B0/" style="font-size: 13px;">商代数</a> <a href="/tags/%E5%9F%9F/" style="font-size: 13px;">域</a> <a href="/tags/%E5%AD%90%E4%BB%A3%E6%95%B0/" style="font-size: 13px;">子代数</a> <a href="/tags/%E5%AD%90%E5%8D%8A%E7%BE%A4/" style="font-size: 13px;">子半群</a> <a href="/tags/%E5%AD%90%E6%A0%BC/" style="font-size: 13px;">子格</a> <a href="/tags/%E5%AD%90%E7%8B%AC%E5%BC%82%E7%82%B9/" style="font-size: 13px;">子独异点</a> <a href="/tags/%E5%AD%90%E7%BE%A4/" style="font-size: 13px;">子群</a> <a href="/tags/%E5%AF%B9%E5%81%B6%E6%80%A7%E5%8E%9F%E7%90%86/" style="font-size: 13px;">对偶性原理</a> <a href="/tags/%E5%B0%81%E9%97%AD/" style="font-size: 13px;">封闭</a> <a href="/tags/%E5%B8%83%E5%B0%94%E6%A0%BC/" style="font-size: 13px;">布尔格</a> <a href="/tags/%E5%B9%B3%E5%87%A1%E5%AD%90%E7%BE%A4/" style="font-size: 13px;">平凡子群</a> <a href="/tags/%E5%BE%AA%E7%8E%AF%E7%8B%AC%E5%BC%82%E7%82%B9/" style="font-size: 13px;">循环独异点</a> <a href="/tags/%E5%BE%AA%E7%8E%AF%E7%BE%A4/" style="font-size: 13px;">循环群</a> <a href="/tags/%E6%8B%89%E6%A0%BC%E6%9C%97%E6%97%A5%E5%AE%9A%E7%90%86/" style="font-size: 13px;">拉格朗日定理</a> <a href="/tags/%E6%98%A0%E5%B0%84/" style="font-size: 13px;">映射</a> <a href="/tags/%E6%9C%80%E5%A4%A7%E4%B8%8B%E7%95%8C/" style="font-size: 13px;">最大下界</a> <a href="/tags/%E6%9C%80%E5%B0%8F%E4%B8%8A%E7%95%8C/" style="font-size: 13px;">最小上界</a> <a href="/tags/%E6%9C%89%E7%95%8C%E6%A0%BC/" style="font-size: 13px;">有界格</a> <a href="/tags/%E6%9C%89%E8%A1%A5%E6%A0%BC/" style="font-size: 13px;">有补格</a> <a href="/tags/%E6%9C%89%E9%99%90%E7%BE%A4/" style="font-size: 13px;">有限群</a> <a href="/tags/%E6%A0%BC/" style="font-size: 13px;">格</a> <a href="/tags/%E6%A0%BC%E5%90%8C%E6%80%81/" style="font-size: 13px;">格同态</a> <a href="/tags/%E6%A8%A1%E6%A0%BC/" style="font-size: 13px;">模格</a> <a href="/tags/%E7%8B%AC%E5%BC%82%E7%82%B9/" style="font-size: 13px;">独异点</a> <a href="/tags/%E7%8E%AF/" style="font-size: 13px;">环</a> <a href="/tags/%E7%94%9F%E6%88%90/" style="font-size: 13px;">生成</a> <a href="/tags/%E7%AD%89%E4%BB%B7%E7%B1%BB/" style="font-size: 13px;">等价类</a> <a href="/tags/%E7%BE%A4/" style="font-size: 13px;">群</a> <a href="/tags/%E7%BE%A4%E5%90%8C%E6%80%81/" style="font-size: 13px;">群同态</a> <a href="/tags/%E7%BE%A4%E7%9A%84%E9%98%B6%E6%95%B0/" style="font-size: 13px;">群的阶数</a> <a href="/tags/%E8%BD%BD%E4%BD%93/" style="font-size: 13px;">载体</a> <a href="/tags/%E9%92%BB%E7%9F%B3%E6%A0%BC/" style="font-size: 13px;">钻石格</a> <a href="/tags/%E9%98%BF%E8%B4%9D%E5%B0%94%E7%BE%A4-%E4%BA%A4%E6%8D%A2%E7%BE%A4/" style="font-size: 13px;">阿贝尔群(交换群)</a> <a href="/tags/%E9%99%AA%E9%9B%86/" style="font-size: 13px;">陪集</a> <a href="/tags/%E9%B8%BD%E5%B7%A2%E5%8E%9F%E7%90%86/" style="font-size: 13px;">鸽巢原理</a>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Archive</h3>
+    <div class="widget-body">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/04/">April 2024</a><span class="archive-list-count">4</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget-body">
+      <ul class="recent-post-list list-unstyled ">
+        
+          <li>
+            
+            <div class="item-thumb">
+              <a href="/2024/04/14/%E6%A0%BC%E4%B8%8E%E5%B8%83%E5%B0%94%E4%BB%A3%E6%95%B0/" class="thumb">
+    
+    
+        <span class="thumb-image thumb-none"></span>
+    
+</a>
+
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/Math/">Math</a>
+              </p>
+              <p class="item-title">
+                <a href="/2024/04/14/%E6%A0%BC%E4%B8%8E%E5%B8%83%E5%B0%94%E4%BB%A3%E6%95%B0/" class="title">格与布尔代数</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2024-04-14T07:55:58.710Z" itemprop="datePublished">2024-04-14</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-thumb">
+              <a href="/2024/04/14/%E4%BB%A3%E6%95%B0%E9%83%A8%E5%88%86/" class="thumb">
+    
+    
+        <span class="thumb-image thumb-none"></span>
+    
+</a>
+
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/Math/">Math</a>
+              </p>
+              <p class="item-title">
+                <a href="/2024/04/14/%E4%BB%A3%E6%95%B0%E9%83%A8%E5%88%86/" class="title">代数</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2024-04-14T07:55:58.708Z" itemprop="datePublished">2024-04-14</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-thumb">
+              <a href="/2024/04/12/%E8%BE%97%E8%BD%AC%E7%9B%B8%E9%99%A4%E6%B3%95%E8%AF%81%E6%98%8E/" class="thumb">
+    
+    
+        <span class="thumb-image thumb-none"></span>
+    
+</a>
+
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2024/04/12/%E8%BE%97%E8%BD%AC%E7%9B%B8%E9%99%A4%E6%B3%95%E8%AF%81%E6%98%8E/" class="title">辗转相除法证明</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2024-04-12T13:19:49.131Z" itemprop="datePublished">2024-04-12</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-thumb">
+              <a href="/2024/04/12/hello-world/" class="thumb">
+    
+    
+        <span class="thumb-image thumb-none"></span>
+    
+</a>
+
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2024/04/12/hello-world/" class="title">Hello World</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2024-04-12T13:04:49.961Z" itemprop="datePublished">2024-04-12</time>
+              </p>
+            </div>
+          </li>
+          
+      </ul>
+    </div>
+  </div>
+  
+
+    
+  </div>
+</aside>
+
+  
+  
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-辗转相除法证明" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      辗转相除法证明
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2024/04/12/%E8%BE%97%E8%BD%AC%E7%9B%B8%E9%99%A4%E6%B3%95%E8%AF%81%E6%98%8E/" class="article-date">
+	  <time datetime="2024-04-12T13:19:49.131Z" itemprop="datePublished">2024-04-12</time>
+	</a>
+</span>
+        
+        
+
+        
+	<span class="article-read hidden-xs">
+	    <i class="icon icon-eye-fill" aria-hidden="true"></i>
+	    <span id="busuanzi_container_page_pv">
+			<span id="busuanzi_value_page_pv">0</span>
+		</span>
+	</span>
+
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2024/04/12/%E8%BE%97%E8%BD%AC%E7%9B%B8%E9%99%A4%E6%B3%95%E8%AF%81%E6%98%8E/#comments" class="article-comment-link">Comments</a></span>
+        
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <h2 id="辗转相除法的证明"><a class="markdownIt-Anchor" href="#辗转相除法的证明"></a> 辗转相除法的证明</h2>
+<p>取<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>a</mi><mo>&gt;</mo><mi>b</mi></mrow><annotation encoding="application/x-tex">a&gt;b</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.69444em;"></span><span class="strut bottom" style="height:0.73354em;vertical-align:-0.0391em;"></span><span class="base textstyle uncramped"><span class="mord mathit">a</span><span class="mrel">&gt;</span><span class="mord mathit">b</span></span></span></span>，记两数的最大公约数为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>g</mi><mi>c</mi><mi>d</mi><mo>(</mo><mi>a</mi><mo separator="true">,</mo><mi>b</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">gcd(a,b)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.03588em;">g</span><span class="mord mathit">c</span><span class="mord mathit">d</span><span class="mopen">(</span><span class="mord mathit">a</span><span class="mpunct">,</span><span class="mord mathit">b</span><span class="mclose">)</span></span></span></span>。</p>
+<p>①记<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>c</mi><mo>=</mo><mi>g</mi><mi>c</mi><mi>d</mi><mo>(</mo><mi>a</mi><mo separator="true">,</mo><mi>b</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">c=gcd(a,b)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mord mathit">c</span><span class="mrel">=</span><span class="mord mathit" style="margin-right:0.03588em;">g</span><span class="mord mathit">c</span><span class="mord mathit">d</span><span class="mopen">(</span><span class="mord mathit">a</span><span class="mpunct">,</span><span class="mord mathit">b</span><span class="mclose">)</span></span></span></span>，若<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>a</mi><mo>=</mo><mi>m</mi><mi>c</mi></mrow><annotation encoding="application/x-tex">a=mc</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.43056em;"></span><span class="strut bottom" style="height:0.43056em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit">a</span><span class="mrel">=</span><span class="mord mathit">m</span><span class="mord mathit">c</span></span></span></span>，<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>b</mi><mo>=</mo><mi>n</mi><mi>c</mi></mrow><annotation encoding="application/x-tex">b=nc</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.69444em;"></span><span class="strut bottom" style="height:0.69444em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit">b</span><span class="mrel">=</span><span class="mord mathit">n</span><span class="mord mathit">c</span></span></span></span>，则<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>m</mi><mo separator="true">,</mo><mi>n</mi></mrow><annotation encoding="application/x-tex">m,n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.43056em;"></span><span class="strut bottom" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="base textstyle uncramped"><span class="mord mathit">m</span><span class="mpunct">,</span><span class="mord mathit">n</span></span></span></span>互质。</p>
+<p>证明：</p>
+<p>​若m，n不是互质的，必然存在<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>p</mi></mrow><annotation encoding="application/x-tex">p</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.43056em;"></span><span class="strut bottom" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="base textstyle uncramped"><span class="mord mathit">p</span></span></span></span>使得<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>m</mi><mo>=</mo><msub><mi>t</mi><mrow><mn>1</mn></mrow></msub><mi>p</mi></mrow><annotation encoding="application/x-tex">m = t_{1}p</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.61508em;"></span><span class="strut bottom" style="height:0.80952em;vertical-align:-0.19444em;"></span><span class="base textstyle uncramped"><span class="mord mathit">m</span><span class="mrel">=</span><span class="mord"><span class="mord mathit">t</span><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:0em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord scriptstyle cramped"><span class="mord mathrm">1</span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="mord mathit">p</span></span></span></span>，<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi><mo>=</mo><msub><mi>t</mi><mrow><mn>2</mn></mrow></msub><mi>p</mi></mrow><annotation encoding="application/x-tex">n=t_{2}p</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.61508em;"></span><span class="strut bottom" style="height:0.80952em;vertical-align:-0.19444em;"></span><span class="base textstyle uncramped"><span class="mord mathit">n</span><span class="mrel">=</span><span class="mord"><span class="mord mathit">t</span><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:0em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord scriptstyle cramped"><span class="mord mathrm">2</span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="mord mathit">p</span></span></span></span>，则<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>a</mi></mrow><annotation encoding="application/x-tex">a</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.43056em;"></span><span class="strut bottom" style="height:0.43056em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit">a</span></span></span></span>与<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>b</mi></mrow><annotation encoding="application/x-tex">b</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.69444em;"></span><span class="strut bottom" style="height:0.69444em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit">b</span></span></span></span>的最大公约数变为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>c</mi><mi>p</mi></mrow><annotation encoding="application/x-tex">cp</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.43056em;"></span><span class="strut bottom" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="base textstyle uncramped"><span class="mord mathit">c</span><span class="mord mathit">p</span></span></span></span>，两者矛盾，假设不成立，于是m，n互质</p>
+<p>②<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>g</mi><mi>c</mi><mi>d</mi><mo>(</mo><mi>a</mi><mo separator="true">,</mo><mi>b</mi><mo>)</mo><mo>=</mo><mi>g</mi><mi>c</mi><mi>d</mi><mo>(</mo><mi>b</mi><mo separator="true">,</mo><mi>a</mi><mspace width="1em"></mspace><mi>m</mi><mi>o</mi><mi>d</mi><mspace width="1em"></mspace><mi>b</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">gcd(a,b)=gcd(b,a \quad mod \quad b)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.03588em;">g</span><span class="mord mathit">c</span><span class="mord mathit">d</span><span class="mopen">(</span><span class="mord mathit">a</span><span class="mpunct">,</span><span class="mord mathit">b</span><span class="mclose">)</span><span class="mrel">=</span><span class="mord mathit" style="margin-right:0.03588em;">g</span><span class="mord mathit">c</span><span class="mord mathit">d</span><span class="mopen">(</span><span class="mord mathit">b</span><span class="mpunct">,</span><span class="mord mathit">a</span><span class="mord mspace quad"></span><span class="mord mathit">m</span><span class="mord mathit">o</span><span class="mord mathit">d</span><span class="mord mspace quad"></span><span class="mord mathit">b</span><span class="mclose">)</span></span></span></span></p>
+<p>证明：</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>a</mi><mo>=</mo><mi>b</mi><mi>x</mi><mo>+</mo><mi>y</mi><mo separator="true">,</mo><mi>a</mi><mspace width="1em"></mspace><mi>m</mi><mi>o</mi><mi>d</mi><mspace width="1em"></mspace><mi>b</mi><mo>=</mo><mi>y</mi><mo>=</mo><mi>a</mi><mo>−</mo><mi>b</mi><mi>x</mi><mo>=</mo><mi>m</mi><mi>c</mi><mo>−</mo><mi>n</mi><mi>c</mi><mi>x</mi><mo>=</mo><mi>c</mi><mo>(</mo><mi>m</mi><mo>−</mo><mi>n</mi><mi>x</mi><mo>)</mo><mo separator="true">,</mo><mi>g</mi><mi>c</mi><mi>d</mi><mo>(</mo><mi>b</mi><mo separator="true">,</mo><mi>a</mi><mspace width="1em"></mspace><mi>m</mi><mi>o</mi><mi>d</mi><mspace width="1em"></mspace><mi>b</mi><mo>)</mo><mo>=</mo><mi>g</mi><mi>c</mi><mi>d</mi><mo>(</mo><mi>b</mi><mo separator="true">,</mo><mi>y</mi><mo>)</mo><mo>=</mo><mi>g</mi><mi>c</mi><mi>d</mi><mo>(</mo><mi>c</mi><mi>n</mi><mo separator="true">,</mo><mi>c</mi><mo>(</mo><mi>m</mi><mo>−</mo><mi>n</mi><mi>x</mi><mo>)</mo><mo>)</mo><mi mathvariant="normal">.</mi></mrow><annotation encoding="application/x-tex">a=bx+y ,
+a \quad mod \quad b = y = a-bx=mc-ncx=c(m-nx) ,
+gcd(b,a\quad mod \quad b) = gcd(b,y) = gcd(cn,c(m-nx)) .
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base displaystyle textstyle uncramped"><span class="mord mathit">a</span><span class="mrel">=</span><span class="mord mathit">b</span><span class="mord mathit">x</span><span class="mbin">+</span><span class="mord mathit" style="margin-right:0.03588em;">y</span><span class="mpunct">,</span><span class="mord mathit">a</span><span class="mord mspace quad"></span><span class="mord mathit">m</span><span class="mord mathit">o</span><span class="mord mathit">d</span><span class="mord mspace quad"></span><span class="mord mathit">b</span><span class="mrel">=</span><span class="mord mathit" style="margin-right:0.03588em;">y</span><span class="mrel">=</span><span class="mord mathit">a</span><span class="mbin">−</span><span class="mord mathit">b</span><span class="mord mathit">x</span><span class="mrel">=</span><span class="mord mathit">m</span><span class="mord mathit">c</span><span class="mbin">−</span><span class="mord mathit">n</span><span class="mord mathit">c</span><span class="mord mathit">x</span><span class="mrel">=</span><span class="mord mathit">c</span><span class="mopen">(</span><span class="mord mathit">m</span><span class="mbin">−</span><span class="mord mathit">n</span><span class="mord mathit">x</span><span class="mclose">)</span><span class="mpunct">,</span><span class="mord mathit" style="margin-right:0.03588em;">g</span><span class="mord mathit">c</span><span class="mord mathit">d</span><span class="mopen">(</span><span class="mord mathit">b</span><span class="mpunct">,</span><span class="mord mathit">a</span><span class="mord mspace quad"></span><span class="mord mathit">m</span><span class="mord mathit">o</span><span class="mord mathit">d</span><span class="mord mspace quad"></span><span class="mord mathit">b</span><span class="mclose">)</span><span class="mrel">=</span><span class="mord mathit" style="margin-right:0.03588em;">g</span><span class="mord mathit">c</span><span class="mord mathit">d</span><span class="mopen">(</span><span class="mord mathit">b</span><span class="mpunct">,</span><span class="mord mathit" style="margin-right:0.03588em;">y</span><span class="mclose">)</span><span class="mrel">=</span><span class="mord mathit" style="margin-right:0.03588em;">g</span><span class="mord mathit">c</span><span class="mord mathit">d</span><span class="mopen">(</span><span class="mord mathit">c</span><span class="mord mathit">n</span><span class="mpunct">,</span><span class="mord mathit">c</span><span class="mopen">(</span><span class="mord mathit">m</span><span class="mbin">−</span><span class="mord mathit">n</span><span class="mord mathit">x</span><span class="mclose">)</span><span class="mclose">)</span><span class="mord mathrm">.</span></span></span></span></span></p>
+<p>其中，只需证明 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.43056em;"></span><span class="strut bottom" style="height:0.43056em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit">n</span></span></span></span>与<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>m</mi><mo>−</mo><mi>n</mi><mi>x</mi></mrow><annotation encoding="application/x-tex">m-nx</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.58333em;"></span><span class="strut bottom" style="height:0.66666em;vertical-align:-0.08333em;"></span><span class="base textstyle uncramped"><span class="mord mathit">m</span><span class="mbin">−</span><span class="mord mathit">n</span><span class="mord mathit">x</span></span></span></span>互质即可。假定两者不互质，则：</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mrow><mo fence="true">{</mo><mtable><mtr><mtd><mrow><mi>n</mi><mo>=</mo><mi>q</mi><mi>d</mi></mrow></mtd></mtr><mtr><mtd><mrow><mi>m</mi><mo>−</mo><mi>n</mi><mi>x</mi><mo>=</mo><mi>p</mi><mi>d</mi></mrow></mtd></mtr><mtr><mtd><mrow></mrow></mtd></mtr></mtable></mrow><mo>⇒</mo><mrow><mo fence="true">{</mo><mtable><mtr><mtd><mrow><mi>m</mi><mo>=</mo><mi>n</mi><mi>x</mi><mo>+</mo><mi>p</mi><mi>d</mi><mo>=</mo><mi>q</mi><mi>d</mi><mi>x</mi><mo>+</mo><mi>p</mi><mi>d</mi></mrow></mtd></mtr><mtr><mtd><mrow><mi>n</mi><mo>=</mo><mi>q</mi><mi>d</mi></mrow></mtd></mtr></mtable></mrow><mo>⇒</mo><mrow><mo fence="true">{</mo><mtable><mtr><mtd><mrow><mi>a</mi><mo>=</mo><mi>m</mi><mi>c</mi><mo>=</mo><mi>c</mi><mi>d</mi><mo>(</mo><mi>q</mi><mi>x</mi><mo>+</mo><mi>p</mi><mo>)</mo></mrow></mtd></mtr><mtr><mtd><mrow><mi>b</mi><mo>=</mo><mi>n</mi><mi>c</mi><mo>=</mo><mi>c</mi><mi>d</mi><mi>q</mi></mrow></mtd></mtr><mtr><mtd><mrow></mrow></mtd></mtr></mtable></mrow></mrow><annotation encoding="application/x-tex">\begin{cases}
+	n = qd \\
+	m-nx = pd\\	
+	\end{cases}
+
+\Rightarrow
+
+\begin{cases}
+	m = nx+pd = qdx+pd \\
+	n = qd
+	\end{cases}
+
+\Rightarrow
+
+\begin{cases}
+	a = mc = cd(qx+p) \\
+	b = nc = cdq\\	
+	\end{cases}
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:2.41em;"></span><span class="strut bottom" style="height:4.32em;vertical-align:-1.9099999999999997em;"></span><span class="base displaystyle textstyle uncramped"><span class="minner displaystyle textstyle uncramped"><span class="style-wrap reset-textstyle textstyle uncramped"><span class="delimsizing mult"><span class="vlist"><span style="top:0.9500099999999998em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="delimsizinginner delim-size4"><span>⎩</span></span></span><span style="top:0.9500099999999998em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="delimsizinginner delim-size4"><span>⎪</span></span></span><span style="top:-0.000010000000000287557em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="delimsizinginner delim-size4"><span>⎨</span></span></span><span style="top:-1.1500100000000002em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="delimsizinginner delim-size4"><span>⎪</span></span></span><span style="top:-1.4500200000000003em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="delimsizinginner delim-size4"><span>⎧</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span><span class="mord"><span class="mtable"><span class="col-align-l"><span class="vlist"><span style="top:-1.4020000000000001em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathit">n</span><span class="mrel">=</span><span class="mord mathit" style="margin-right:0.03588em;">q</span><span class="mord mathit">d</span></span></span><span style="top:0.0379999999999997em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathit">m</span><span class="mbin">−</span><span class="mord mathit">n</span><span class="mord mathit">x</span><span class="mrel">=</span><span class="mord mathit">p</span><span class="mord mathit">d</span></span></span><span style="top:1.4779999999999998em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span></span><span class="sizing reset-size5 size5 reset-textstyle textstyle uncramped nulldelimiter"></span></span><span class="mrel">⇒</span><span class="minner displaystyle textstyle uncramped"><span class="style-wrap reset-textstyle textstyle uncramped" style="top:0em;"><span class="delimsizing size4">{</span></span><span class="mord"><span class="mtable"><span class="col-align-l"><span class="vlist"><span style="top:-0.6819999999999999em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathit">m</span><span class="mrel">=</span><span class="mord mathit">n</span><span class="mord mathit">x</span><span class="mbin">+</span><span class="mord mathit">p</span><span class="mord mathit">d</span><span class="mrel">=</span><span class="mord mathit" style="margin-right:0.03588em;">q</span><span class="mord mathit">d</span><span class="mord mathit">x</span><span class="mbin">+</span><span class="mord mathit">p</span><span class="mord mathit">d</span></span></span><span style="top:0.7579999999999999em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathit">n</span><span class="mrel">=</span><span class="mord mathit" style="margin-right:0.03588em;">q</span><span class="mord mathit">d</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span></span><span class="sizing reset-size5 size5 reset-textstyle textstyle uncramped nulldelimiter"></span></span><span class="mrel">⇒</span><span class="minner displaystyle textstyle uncramped"><span class="style-wrap reset-textstyle textstyle uncramped"><span class="delimsizing mult"><span class="vlist"><span style="top:0.9500099999999998em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="delimsizinginner delim-size4"><span>⎩</span></span></span><span style="top:0.9500099999999998em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="delimsizinginner delim-size4"><span>⎪</span></span></span><span style="top:-0.000010000000000287557em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="delimsizinginner delim-size4"><span>⎨</span></span></span><span style="top:-1.1500100000000002em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="delimsizinginner delim-size4"><span>⎪</span></span></span><span style="top:-1.4500200000000003em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="delimsizinginner delim-size4"><span>⎧</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span><span class="mord"><span class="mtable"><span class="col-align-l"><span class="vlist"><span style="top:-1.4020000000000001em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathit">a</span><span class="mrel">=</span><span class="mord mathit">m</span><span class="mord mathit">c</span><span class="mrel">=</span><span class="mord mathit">c</span><span class="mord mathit">d</span><span class="mopen">(</span><span class="mord mathit" style="margin-right:0.03588em;">q</span><span class="mord mathit">x</span><span class="mbin">+</span><span class="mord mathit">p</span><span class="mclose">)</span></span></span><span style="top:0.0379999999999997em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathit">b</span><span class="mrel">=</span><span class="mord mathit">n</span><span class="mord mathit">c</span><span class="mrel">=</span><span class="mord mathit">c</span><span class="mord mathit">d</span><span class="mord mathit" style="margin-right:0.03588em;">q</span></span></span><span style="top:1.4779999999999998em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span></span><span class="sizing reset-size5 size5 reset-textstyle textstyle uncramped nulldelimiter"></span></span></span></span></span></span></p>
+<p>发生矛盾，假设不成立，于是两者互斥，即证<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>g</mi><mi>c</mi><mi>d</mi><mo>(</mo><mi>a</mi><mo separator="true">,</mo><mi>b</mi><mo>)</mo><mo>=</mo><mi>g</mi><mi>c</mi><mi>d</mi><mo>(</mo><mi>b</mi><mo separator="true">,</mo><mi>a</mi><mspace width="1em"></mspace><mi>m</mi><mi>o</mi><mi>d</mi><mspace width="1em"></mspace><mi>b</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">gcd(a,b)=gcd(b,a \quad mod \quad b)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.03588em;">g</span><span class="mord mathit">c</span><span class="mord mathit">d</span><span class="mopen">(</span><span class="mord mathit">a</span><span class="mpunct">,</span><span class="mord mathit">b</span><span class="mclose">)</span><span class="mrel">=</span><span class="mord mathit" style="margin-right:0.03588em;">g</span><span class="mord mathit">c</span><span class="mord mathit">d</span><span class="mopen">(</span><span class="mord mathit">b</span><span class="mpunct">,</span><span class="mord mathit">a</span><span class="mord mspace quad"></span><span class="mord mathit">m</span><span class="mord mathit">o</span><span class="mord mathit">d</span><span class="mord mspace quad"></span><span class="mord mathit">b</span><span class="mclose">)</span></span></span></span>，递推式成立。</p>
+<p>③终止条件</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>x</mi><mo>=</mo><mi>t</mi><mi>y</mi><mo>⇒</mo><mi>g</mi><mo>(</mo><mi>x</mi><mo separator="true">,</mo><mi>y</mi><mo>)</mo><mo>=</mo><mi>y</mi><mo>⇒</mo><mi>g</mi><mi>c</mi><mi>d</mi><mo>(</mo><mi>a</mi><mo separator="true">,</mo><mi>b</mi><mo>)</mo><mo>=</mo><mi>y</mi></mrow><annotation encoding="application/x-tex">x = ty \Rightarrow g(x,y) = y \Rightarrow gcd(a,b)= y
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base displaystyle textstyle uncramped"><span class="mord mathit">x</span><span class="mrel">=</span><span class="mord mathit">t</span><span class="mord mathit" style="margin-right:0.03588em;">y</span><span class="mrel">⇒</span><span class="mord mathit" style="margin-right:0.03588em;">g</span><span class="mopen">(</span><span class="mord mathit">x</span><span class="mpunct">,</span><span class="mord mathit" style="margin-right:0.03588em;">y</span><span class="mclose">)</span><span class="mrel">=</span><span class="mord mathit" style="margin-right:0.03588em;">y</span><span class="mrel">⇒</span><span class="mord mathit" style="margin-right:0.03588em;">g</span><span class="mord mathit">c</span><span class="mord mathit">d</span><span class="mopen">(</span><span class="mord mathit">a</span><span class="mpunct">,</span><span class="mord mathit">b</span><span class="mclose">)</span><span class="mrel">=</span><span class="mord mathit" style="margin-right:0.03588em;">y</span></span></span></span></span></p>
+
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="http://example.com/2024/04/12/%E8%BE%97%E8%BD%AC%E7%9B%B8%E9%99%A4%E6%B3%95%E8%AF%81%E6%98%8E/" title="辗转相除法证明" target="_blank" rel="external">http://example.com/2024/04/12/辗转相除法证明/</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote>
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/qunhuany" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.jpg" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/qunhuany" target="_blank"><span class="text-dark">Dsen</span><small class="ml-1x">美团外卖，送啥都快</small></a></h3>
+        <div>none</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+  	
+      <div id="vcomments"></div>
+    
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    <li class="prev">
+      <a href="/2024/04/14/%E4%BB%A3%E6%95%B0%E9%83%A8%E5%88%86/" title="代数"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;Newer</span></a>
+    </li>
+    
+    
+    <li class="next">
+      <a href="/2024/04/12/hello-world/" title="Hello World"><span>Older&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+  </ul>
+  
+  
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-fancy btn-donate pop-onhover bg-gradient-warning" data-toggle="modal" data-target="#donateModal"><span>$</span></button>
+  <!-- <div class="wave-icon wave-icon-danger btn-donate" data-toggle="modal" data-target="#donateModal">
+    <div class="wave-circle"><span class="icon"><i class="icon icon-bill"></i></span></div>
+  </div> -->
+  
+  
+  <div class="bar-right">
+    
+    <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter" data-mobile-sites="weibo,qq,qzone"></div>
+    
+  </div>
+  </div>
+</nav>
+  
+<!-- Modal -->
+<div class="modal modal-center modal-small modal-xs-full fade" id="donateModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content donate">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <div class="modal-body">
+        <div class="donate-box">
+          <div class="donate-head">
+            <p>Maybe you could buy me a cup of coffee.</p>
+          </div>
+          <div class="tab-content">
+            <div role="tabpanel" class="tab-pane fade active in" id="alipay">
+              <div class="donate-payimg">
+                <img src="/images/donate/alipayimg.png" alt="Scan Qrcode" title="Scan" />
+              </div>
+              <p class="text-muted mv">Scan this qrcode</p>
+              <p class="text-grey">Open alipay app scan this qrcode, buy me a coffee!</p>
+            </div>
+            <div role="tabpanel" class="tab-pane fade" id="wechatpay">
+              <div class="donate-payimg">
+                <img src="/images/donate/wechatpayimg.png" alt="Scan Qrcode" title="Scan" />
+              </div>
+              <p class="text-muted mv">Scan this qrcode</p>
+              <p class="text-grey">Open wechat app scan this qrcode, buy me a coffee!</p>
+            </div>
+          </div>
+          <div class="donate-footer">
+            <ul class="nav nav-tabs nav-justified" role="tablist">
+              <li role="presentation" class="active">
+                <a href="#alipay" id="alipay-tab" role="tab" data-toggle="tab" aria-controls="alipay" aria-expanded="true"><i class="icon icon-alipay"></i> alipay</a>
+              </li>
+              <li role="presentation" class="">
+                <a href="#wechatpay" role="tab" id="wechatpay-tab" data-toggle="tab" aria-controls="wechatpay" aria-expanded="false"><i class="icon icon-wepay"></i> wechat payment</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/qunhuany" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+    </ul>
+
+    <div class="copyright">
+    	
+        <div class="publishby">
+        	Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.
+        </div>
+    </div>
+</footer>
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+
+<script src="/js/plugin.min.js"></script>
+
+
+<script src="/js/application.js"></script>
+
+
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+
+
+
+
+   
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+   
+    
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/valine"></script>
+  <script type="text/javascript">
+  var GUEST = ['nick', 'mail', 'link'];
+  var meta = 'nick,mail,link';
+  meta = meta.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#vcomments',
+    verify: false,
+    notify: false,
+    appId: '',
+    appKey: '',
+    placeholder: 'Just go go',
+    avatar: 'mm',
+    meta: meta,
+    pageSize: '10' || 10,
+    visitor: false
+  });
+  </script>
+
+     
+
+
+
+
+
+
+
+</body>
+</html>
