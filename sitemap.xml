@@ -2,6 +2,33 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://qunhuany.github.io/2024/04/27/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/02%E7%BA%BF%E6%80%A7%E8%A1%A8/03%20%E5%8D%95%E9%93%BE%E8%A1%A8/</loc>
+    
+    <lastmod>2024-04-27</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://qunhuany.github.io/2024/04/27/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/02%E7%BA%BF%E6%80%A7%E8%A1%A8/02%E9%A1%BA%E5%BA%8F%E8%A1%A8%E2%80%94%E2%80%94%E5%8A%A8%E6%80%81%E5%88%86%E9%85%8D%E7%89%88/</loc>
+    
+    <lastmod>2024-04-27</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://qunhuany.github.io/2024/04/27/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/02%E7%BA%BF%E6%80%A7%E8%A1%A8/01%E9%A1%BA%E5%BA%8F%E8%A1%A8%E2%80%94%E2%80%94%E9%9D%99%E6%80%81%E5%88%86%E9%85%8D%E7%89%88/</loc>
+    
+    <lastmod>2024-04-27</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://qunhuany.github.io/2024/04/27/B%E6%B5%8B%E2%80%94%E2%80%94%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%BB%BC%E5%90%88%E8%AE%BE%E8%AE%A1/</loc>
     
     <lastmod>2024-04-27</lastmod>
@@ -473,6 +500,27 @@
     <priority>0.2</priority>
   </url>
   
+  <url>
+    <loc>https://qunhuany.github.io/tags/%E9%A1%BA%E5%BA%8F%E8%A1%A8-%E9%9D%99%E6%80%81%E5%88%86%E9%85%8D/</loc>
+    <lastmod>2024-04-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://qunhuany.github.io/tags/%E9%A1%BA%E5%BA%8F%E8%A1%A8-%E5%8A%A8%E6%80%81%E5%88%86%E9%85%8D-malloc%E4%B8%8Erealloc%E5%87%BD%E6%95%B0/</loc>
+    <lastmod>2024-04-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://qunhuany.github.io/tags/%E5%8D%95%E9%93%BE%E8%A1%A8-%E5%A4%B4%E8%8A%82%E7%82%B9/</loc>
+    <lastmod>2024-04-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
 
   
   <url>
@@ -491,6 +539,13 @@
   
   <url>
     <loc>https://qunhuany.github.io/categories/Math/</loc>
+    <lastmod>2024-04-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://qunhuany.github.io/categories/SD/</loc>
     <lastmod>2024-04-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
