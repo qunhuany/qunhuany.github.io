@@ -6,7 +6,7 @@
   <link href="https://qunhuany.github.io/atom.xml" rel="self"/>
   
   <link href="https://qunhuany.github.io/"/>
-  <updated>2024-05-18T02:26:49.213Z</updated>
+  <updated>2024-06-17T03:43:43.494Z</updated>
   <id>https://qunhuany.github.io/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>DH密钥协商与SM4结合实现TXT文件加密与解密</title>
+    <link href="https://qunhuany.github.io/2024/06/17/DH+SM4%E5%AE%9E%E7%8E%B0txt%E5%8A%A0%E8%A7%A3%E5%AF%86/"/>
+    <id>https://qunhuany.github.io/2024/06/17/DH+SM4%E5%AE%9E%E7%8E%B0txt%E5%8A%A0%E8%A7%A3%E5%AF%86/</id>
+    <published>2024-06-17T03:43:01.552Z</published>
+    <updated>2024-06-17T03:43:43.494Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="dh密钥协商与sm4加密算法实现txt文件加密与解密"><a class="markdownIt-Anchor" href="#dh密钥协商与sm4加密算法实现txt文件加密与解密"></a> DH密钥协商与SM4加密算法实现txt文件加密与解密</h1><blockquote><p>本次实验实现了txt文件的在本地的加密与解密</p></blockquote><p>要交报告，先删</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;dh密钥协商与sm4加密算法实现txt文件加密与解密&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#dh密钥协商与sm4加密算法实现txt文件加密与解密&quot;&gt;&lt;/a&gt; DH密钥协商与SM4加密算法实现txt文件加密与解密&lt;/h1&gt;
+&lt;bl</summary>
+      
+    
+    
+    
+    <category term="sevurity" scheme="https://qunhuany.github.io/categories/sevurity/"/>
+    
+    
+  </entry>
   
   <entry>
     <title></title>
