@@ -1,0 +1,341 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><title>计算机网络综合设计 | Linglong</title><noscript>开启JavaScript才能访问本站哦~</noscript><link rel="icon" href="/img/pwa/favicon.ico"><!-- index.css--><link rel="stylesheet" href="/css/index.css?v=1.12.2"><!-- inject head--><link rel="canonical" href="https://qunhuany.github.io/2024/07/06/B%E6%B5%8B%E2%80%94%E2%80%94%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%BB%BC%E5%90%88%E8%AE%BE%E8%AE%A1/"><link rel="stylesheet" href="https://cdn2.codesign.qq.com/icons/7pOrz0WXB5ZWJPX/latest/iconfont.css"><!-- aplayer--><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aplayer/1.10.1/APlayer.min.css"><!-- swiper--><!-- fancybox ui--><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.36/fancybox/fancybox.min.css"><!-- katex--><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css"><!-- Open Graph--><meta name="description" content="一、实验目的 能够正确配置静态路由，选择合适的设备正确配置实现规定的三个网段，并确保网络的联通性 学习交换机端口上行下行限速原理，掌握限速具体配置方法。 了解dhcp原理，掌握dhcp配置方法。 了解ARP协议，并进行ARP安全配置 二、实验环境 Windows 10操作系"><!-- pwa--><meta name="apple-mobile-web-app-capable" content="Linglong"><meta name="theme-color" content="var(--efu-main)"><meta name="apple-mobile-web-app-status-bar-style" content="var(--efu-main)"><link rel="bookmark" href="/img/pwa/favicon.ico"><link rel="apple-touch-icon" href="/img/pwa/favicon.ico" sizes="180x180"><script>console.log(
+    "%c Program: Hexo %c Theme: Solitude %c Version: v1.12.2",
+    "border-radius:5px 0 0 5px;padding: 5px 10px;color:white;background:#ff3842;",
+    "padding: 5px 10px;color:white;background:#3e9f50;",
+    "padding: 5px 10px;color:white;background:#0084ff;border-radius:0 5px 5px 0",
+)
+</script><script>(()=>{
+        const saveToLocal = {
+            set: function setWithExpiry(key, value, ttl) {
+                if (ttl === 0)
+                    return
+                const now = new Date()
+                const expiryDay = ttl * 86400000
+                const item = {
+                    value: value,
+                    expiry: now.getTime() + expiryDay
+                }
+                localStorage.setItem(key, JSON.stringify(item))
+            },
+            get: function getWithExpiry(key) {
+                const itemStr = localStorage.getItem(key)
+    
+                if (!itemStr) {
+                    return undefined
+                }
+                const item = JSON.parse(itemStr)
+                const now = new Date()
+    
+                if (now.getTime() > item.expiry) {
+                    localStorage.removeItem(key)
+                    return undefined
+                }
+                return item.value
+            }
+        };
+        window.utils = {
+            saveToLocal: saveToLocal,
+            getCSS: (url, id = false) => new Promise((resolve, reject) => {
+              const link = document.createElement('link')
+              link.rel = 'stylesheet'
+              link.href = url
+              if (id) link.id = id
+              link.onerror = reject
+              link.onload = link.onreadystatechange = function() {
+                const loadState = this.readyState
+                if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+                link.onload = link.onreadystatechange = null
+                resolve()
+              }
+              document.head.appendChild(link)
+            }),
+            getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+              const script = document.createElement('script')
+              script.src = url
+              script.async = true
+              script.onerror = reject
+              script.onload = script.onreadystatechange = function() {
+                const loadState = this.readyState
+                if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+                script.onload = script.onreadystatechange = null
+                resolve()
+              }
+    
+              Object.keys(attr).forEach(key => {
+                script.setAttribute(key, attr[key])
+              })
+    
+              document.head.appendChild(script)
+            }),
+            addGlobalFn: (key, fn, name = false, parent = window) => {
+                const globalFn = parent.globalFn || {}
+                const keyObj = globalFn[key] || {}
+        
+                if (name && keyObj[name]) return
+        
+                name = name || Object.keys(keyObj).length
+                keyObj[name] = fn
+                globalFn[key] = keyObj
+                parent.globalFn = globalFn
+            },
+        }
+    })()</script><!-- global head--><script>const GLOBAL_CONFIG = {
+    root: '/',
+    algolia: undefined,
+    localsearch: {"preload":false,"path":"/search.xml"},
+    runtime: '2024-07-02 00:00:00',
+    lazyload: {
+        enable: true,
+        error: '/img/error_load.avif'
+    },
+    copyright: {"limit":50,"author":"作者: Southeast","link":"链接: ","source":"来源: Linglong","info":"著作权归作者所有。 商业转载请联系作者获得授权，非商业转载请注明出处。"},
+    highlight: {"limit":200,"expand":true,"copy":true,"syntax":"highlight.js"},
+    randomlink: false,
+    lang: {"theme":{"dark":"已切换至深色模式","light":"已切换至浅色模式"},"copy":{"success":"复制成功","error":"复制失败"},"backtop":"返回顶部","time":{"day":"天前","hour":"小时前","just":"刚刚","min":"分钟前","month":"个月前"},"day":" 天","f12":"开发者模式已打开，请遵循GPL协议。","totalk":"无需删除空行，直接输入评论即可","search":{"empty":"找不到你查询的内容：${query}","hit":"找到 ${hits} 条结果，用时 ${time} 毫秒","placeholder":"输入关键词快速查找","count":"共 <b>${count}</b> 条结果。"}},
+    aside: {
+        sayhello: {
+            morning: '一日之计在于晨',
+            noon: '吃饱了才有力气干活',
+            afternoon: '集中精力，攻克难关',
+            night: '不要太劳累了，早睡更健康',
+            goodnight: '睡个好觉，保证精力充沛',
+        },
+        sayhello2: [],
+        sayhello3: {
+            prefix: '好久不见，',
+            back: '欢迎再次回来，',
+        },
+    },
+    covercolor: {
+        enable: false
+    },
+    comment: false,
+    lightbox: 'fancybox',
+    post_ai: false,
+    right_menu: {"mode":{"dark":"深色模式","light":"浅色模式"},"img_error":"此图片无法复制与下载","music":{"start":"播放音乐","stop":"暂停音乐"}},
+};</script><!-- page-config head--><script id="config-diff">var PAGE_CONFIG = {
+    is_post: true,
+    is_page: false,
+    is_home: false,
+    page: '',
+    toc: true,
+    comment: false,
+    ai_text: false
+}</script><meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="Linglong" type="application/atom+xml">
+</head><body id="body"><!-- universe--><canvas id="universe"></canvas><!-- loading--><!-- console--><div id="console"><div class="close-btn" onclick="sco.hideConsole()"><i class="solitude st-close-fill"></i></div><div class="console-card-group"><div class="console-card-group-right"><div class="console-card tags" onclick="sco.hideConsole()"><div class="card-content"><div class="author-content-item-tips">标签</div><div class="author-content-item-title">寻找感兴趣的领域</div></div><div class="card-tag-cloud"><a href="/tags/%E9%A1%BA%E5%BA%8F%E8%A1%A8/">顺序表<sup>1</sup></a><a href="/tags/%E9%9D%99%E6%80%81%E5%88%86%E9%85%8D/">静态分配<sup>1</sup></a><a href="/tags/%E9%A1%BA%E5%BA%8F%E8%A1%A8-%E5%8A%A8%E6%80%81%E5%88%86%E9%85%8D-malloc%E4%B8%8Erealloc%E5%87%BD%E6%95%B0/">-顺序表 -动态分配 -malloc与realloc函数<sup>1</sup></a><a href="/tags/%E9%9D%99%E6%80%81%E8%B7%AF%E7%94%B1%E9%85%8D%E7%BD%AE/">静态路由配置<sup>1</sup></a><a href="/tags/DHCP/">DHCP<sup>1</sup></a><a href="/tags/ARP%E5%AE%89%E5%85%A8%E9%85%8D%E7%BD%AE/">ARP安全配置<sup>1</sup></a><a href="/tags/%E5%8D%95%E9%93%BE%E8%A1%A8-%E5%A4%B4%E8%8A%82%E7%82%B9/">-单链表 -头节点<sup>1</sup></a><a href="/tags/DH%E5%AF%86%E9%92%A5%E5%8D%8F%E5%95%86/">DH密钥协商<sup>1</sup></a><a href="/tags/SM4/">SM4<sup>1</sup></a><a href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/">二叉树<sup>1</sup></a><a href="/tags/%E4%BB%A3%E6%95%B0/">代数<sup>1</sup></a><a href="/tags/%E4%BB%A3%E6%95%B0%E5%B8%B8%E5%85%83/">代数常元<sup>1</sup></a><a href="/tags/%E5%AD%90%E4%BB%A3%E6%95%B0/">子代数<sup>1</sup></a><a href="/tags/%E5%90%8C%E6%80%81/">同态<sup>1</sup></a><a href="/tags/%E5%90%8C%E6%80%81%E8%B1%A1/">同态象<sup>1</sup></a><a href="/tags/%E6%98%A0%E5%B0%84/">映射<sup>1</sup></a><a href="/tags/%E5%90%8C%E4%BD%99%E5%85%B3%E7%B3%BB/">同余关系<sup>1</sup></a><a href="/tags/%E5%95%86%E4%BB%A3%E6%95%B0/">商代数<sup>1</sup></a><a href="/tags/%E7%AD%89%E4%BB%B7%E7%B1%BB/">等价类<sup>1</sup></a><a href="/tags/%E5%88%92%E5%88%86/">划分<sup>1</sup></a><a href="/tags/%E5%8D%8A%E7%BE%A4/">半群<sup>1</sup></a><a href="/tags/%E5%AD%90%E5%8D%8A%E7%BE%A4/">子半群<sup>1</sup></a><a href="/tags/%E7%8B%AC%E5%BC%82%E7%82%B9/">独异点<sup>1</sup></a><a href="/tags/%E5%AD%90%E7%8B%AC%E5%BC%82%E7%82%B9/">子独异点<sup>1</sup></a><a href="/tags/%E5%BE%AA%E7%8E%AF%E7%8B%AC%E5%BC%82%E7%82%B9/">循环独异点<sup>1</sup></a><a href="/tags/%E7%BE%A4/">群<sup>1</sup></a><a href="/tags/%E7%BE%A4%E7%9A%84%E9%98%B6%E6%95%B0/">群的阶数<sup>1</sup></a><a href="/tags/%E5%85%83%E7%B4%A0%E7%9A%84%E9%98%B6/">元素的阶<sup>1</sup></a><a href="/tags/%E6%9C%89%E9%99%90%E7%BE%A4/">有限群<sup>1</sup></a><a href="/tags/%E9%B8%BD%E5%B7%A2%E5%8E%9F%E7%90%86/">鸽巢原理<sup>1</sup></a><a href="/tags/%E5%AD%90%E7%BE%A4/">子群<sup>1</sup></a><a href="/tags/%E9%98%BF%E8%B4%9D%E5%B0%94%E7%BE%A4-%E4%BA%A4%E6%8D%A2%E7%BE%A4/">阿贝尔群(交换群)<sup>1</sup></a><a href="/tags/%E5%BE%AA%E7%8E%AF%E7%BE%A4/">循环群<sup>1</sup></a><a href="/tags/%E5%B9%B3%E5%87%A1%E5%AD%90%E7%BE%A4/">平凡子群<sup>1</sup></a><a href="/tags/%E7%94%9F%E6%88%90/">生成<sup>1</sup></a><a href="/tags/%E7%BE%A4%E5%90%8C%E6%80%81/">群同态<sup>1</sup></a><a href="/tags/%E5%90%8C%E6%80%81%E6%A0%B8/">同态核<sup>1</sup></a><a href="/tags/%E9%99%AA%E9%9B%86/">陪集<sup>1</sup></a><a href="/tags/%E6%8B%89%E6%A0%BC%E6%9C%97%E6%97%A5%E5%AE%9A%E7%90%86/">拉格朗日定理<sup>1</sup></a><a href="/tags/%E7%8E%AF/">环<sup>1</sup></a><a href="/tags/%E5%9F%9F/">域<sup>1</sup></a><a href="/tags/%E8%80%83%E7%A0%94/">考研<sup>1</sup></a><a href="/tags/%E6%A0%91/">树<sup>1</sup></a><a href="/tags/%E6%A0%BC/">格<sup>1</sup></a><a href="/tags/%E5%81%8F%E5%BA%8F%E5%85%B3%E7%B3%BB/">偏序关系<sup>1</sup></a><a href="/tags/%E6%9C%80%E5%B0%8F%E4%B8%8A%E7%95%8C/">最小上界<sup>1</sup></a><a href="/tags/%E6%9C%80%E5%A4%A7%E4%B8%8B%E7%95%8C/">最大下界<sup>1</sup></a><a href="/tags/%E5%AF%B9%E5%81%B6%E6%80%A7%E5%8E%9F%E7%90%86/">对偶性原理<sup>1</sup></a><a href="/tags/%E5%93%88%E6%96%AF%E5%9B%BE/">哈斯图<sup>1</sup></a><a href="/tags/%E4%BB%A3%E6%95%B0%E6%A0%BC/">代数格<sup>1</sup></a><a href="/tags/%E5%AD%90%E6%A0%BC/">子格<sup>1</sup></a><a href="/tags/%E5%B0%81%E9%97%AD/">封闭<sup>1</sup></a><a href="/tags/%E6%A0%BC%E5%90%8C%E6%80%81/">格同态<sup>1</sup></a><a href="/tags/%E8%BD%BD%E4%BD%93/">载体<sup>1</sup></a><a href="/tags/%E5%88%86%E9%85%8D%E6%A0%BC/">分配格<sup>1</sup></a><a href="/tags/%E6%9C%89%E7%95%8C%E6%A0%BC/">有界格<sup>1</sup></a><a href="/tags/%E6%9C%89%E8%A1%A5%E6%A0%BC/">有补格<sup>1</sup></a><a href="/tags/%E5%B8%83%E5%B0%94%E6%A0%BC/">布尔格<sup>1</sup></a><a href="/tags/%E6%A8%A1%E6%A0%BC/">模格<sup>1</sup></a><a href="/tags/%E4%BA%94%E8%A7%92%E6%A0%BC/">五角格<sup>1</sup></a><a href="/tags/%E9%92%BB%E7%9F%B3%E6%A0%BC/">钻石格<sup>1</sup></a></div></div><div class="console-card history" onclick="sco.hideConsole()"><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/07/"><span class="card-archive-list-date">2024/07</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">5</span><span class="card-archive-list-count-unit">篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/05/"><span class="card-archive-list-date">2024/05</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">1</span><span class="card-archive-list-count-unit">篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/04/"><span class="card-archive-list-date">2024/04</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">6</span><span class="card-archive-list-count-unit">篇</span></div></a></li></ul></div></div></div><div class="button-group"><div class="console-btn-item"><span class="darkmode_switchbutton" onclick="sco.switchDarkMode()" title="昼夜切换"><i class="solitude st-moon-clear-fill"></i></span></div><div class="console-btn-item" id="consoleHideAside"><span class="asideSwitch" onclick="sco.switchHideAside()" title="边栏显示控制"><i class="solitude st-side-bar-fill"></i></span></div><div class="console-btn-item" id="consoleMusic" onclick="sco.musicToggle()"><span class="music-switch" title="音乐开关"><i class="solitude st-disc-fill"></i></span></div></div><div class="console-mask" onclick="sco.hideConsole()"></div></div><!-- sidebar--><div id="sidebar" style="zoom: 1;"><div id="menu-mask" style="display: none;"></div><div id="sidebar-menus"><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">12</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">6</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">61</div></a></div></div></div><span class="sidebar-menu-item-title">功能</span><div class="sidebar-menu-item"><span class="darkmode_switchbutton menu-child" onclick="sco.switchDarkMode()"><i class="solitude st-moon-clear-fill"></i><span>显示模式</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><span>首页</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span>文库</span></a><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="solitude  st-folder-fill"></i><span>文章列表</span></a></li><li><a class="site-page child" href="/categories/"><i class="solitude  st-checkbox-multiple-blank-fill"></i><span>全部分类</span></a></li><li><a class="site-page child" href="/tags/"><i class="solitude  st-price-tag-fill"></i><span>全部标签</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span>我的</span></a><ul class="menus_item_child"><li><a class="site-page child" href="/tlink/"><i class="solitude  st-tools-fill"></i><span>工具箱</span></a></li><li><a class="site-page child" href="/music/"><i class="solitude  st-disc-fill"></i><span>音乐馆</span></a></li></ul></div></div><span class="sidebar-menu-item-title">标签</span><div class="card-widget card-tags card-archives card-webinfo card-allinfo"><div class="card-tag-cloud"><a href="/tags/%E9%A1%BA%E5%BA%8F%E8%A1%A8/">顺序表<sup>1</sup></a><a href="/tags/%E9%9D%99%E6%80%81%E5%88%86%E9%85%8D/">静态分配<sup>1</sup></a><a href="/tags/%E9%A1%BA%E5%BA%8F%E8%A1%A8-%E5%8A%A8%E6%80%81%E5%88%86%E9%85%8D-malloc%E4%B8%8Erealloc%E5%87%BD%E6%95%B0/">-顺序表 -动态分配 -malloc与realloc函数<sup>1</sup></a><a href="/tags/%E9%9D%99%E6%80%81%E8%B7%AF%E7%94%B1%E9%85%8D%E7%BD%AE/">静态路由配置<sup>1</sup></a><a href="/tags/DHCP/">DHCP<sup>1</sup></a><a href="/tags/ARP%E5%AE%89%E5%85%A8%E9%85%8D%E7%BD%AE/">ARP安全配置<sup>1</sup></a><a href="/tags/%E5%8D%95%E9%93%BE%E8%A1%A8-%E5%A4%B4%E8%8A%82%E7%82%B9/">-单链表 -头节点<sup>1</sup></a><a href="/tags/DH%E5%AF%86%E9%92%A5%E5%8D%8F%E5%95%86/">DH密钥协商<sup>1</sup></a><a href="/tags/SM4/">SM4<sup>1</sup></a><a href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/">二叉树<sup>1</sup></a><a href="/tags/%E4%BB%A3%E6%95%B0/">代数<sup>1</sup></a><a href="/tags/%E4%BB%A3%E6%95%B0%E5%B8%B8%E5%85%83/">代数常元<sup>1</sup></a><a href="/tags/%E5%AD%90%E4%BB%A3%E6%95%B0/">子代数<sup>1</sup></a><a href="/tags/%E5%90%8C%E6%80%81/">同态<sup>1</sup></a><a href="/tags/%E5%90%8C%E6%80%81%E8%B1%A1/">同态象<sup>1</sup></a><a href="/tags/%E6%98%A0%E5%B0%84/">映射<sup>1</sup></a><a href="/tags/%E5%90%8C%E4%BD%99%E5%85%B3%E7%B3%BB/">同余关系<sup>1</sup></a><a href="/tags/%E5%95%86%E4%BB%A3%E6%95%B0/">商代数<sup>1</sup></a><a href="/tags/%E7%AD%89%E4%BB%B7%E7%B1%BB/">等价类<sup>1</sup></a><a href="/tags/%E5%88%92%E5%88%86/">划分<sup>1</sup></a><a href="/tags/%E5%8D%8A%E7%BE%A4/">半群<sup>1</sup></a><a href="/tags/%E5%AD%90%E5%8D%8A%E7%BE%A4/">子半群<sup>1</sup></a><a href="/tags/%E7%8B%AC%E5%BC%82%E7%82%B9/">独异点<sup>1</sup></a><a href="/tags/%E5%AD%90%E7%8B%AC%E5%BC%82%E7%82%B9/">子独异点<sup>1</sup></a><a href="/tags/%E5%BE%AA%E7%8E%AF%E7%8B%AC%E5%BC%82%E7%82%B9/">循环独异点<sup>1</sup></a><a href="/tags/%E7%BE%A4/">群<sup>1</sup></a><a href="/tags/%E7%BE%A4%E7%9A%84%E9%98%B6%E6%95%B0/">群的阶数<sup>1</sup></a><a href="/tags/%E5%85%83%E7%B4%A0%E7%9A%84%E9%98%B6/">元素的阶<sup>1</sup></a><a href="/tags/%E6%9C%89%E9%99%90%E7%BE%A4/">有限群<sup>1</sup></a><a href="/tags/%E9%B8%BD%E5%B7%A2%E5%8E%9F%E7%90%86/">鸽巢原理<sup>1</sup></a><a href="/tags/%E5%AD%90%E7%BE%A4/">子群<sup>1</sup></a><a href="/tags/%E9%98%BF%E8%B4%9D%E5%B0%94%E7%BE%A4-%E4%BA%A4%E6%8D%A2%E7%BE%A4/">阿贝尔群(交换群)<sup>1</sup></a><a href="/tags/%E5%BE%AA%E7%8E%AF%E7%BE%A4/">循环群<sup>1</sup></a><a href="/tags/%E5%B9%B3%E5%87%A1%E5%AD%90%E7%BE%A4/">平凡子群<sup>1</sup></a><a href="/tags/%E7%94%9F%E6%88%90/">生成<sup>1</sup></a><a href="/tags/%E7%BE%A4%E5%90%8C%E6%80%81/">群同态<sup>1</sup></a><a href="/tags/%E5%90%8C%E6%80%81%E6%A0%B8/">同态核<sup>1</sup></a><a href="/tags/%E9%99%AA%E9%9B%86/">陪集<sup>1</sup></a><a href="/tags/%E6%8B%89%E6%A0%BC%E6%9C%97%E6%97%A5%E5%AE%9A%E7%90%86/">拉格朗日定理<sup>1</sup></a><a href="/tags/%E7%8E%AF/">环<sup>1</sup></a><a href="/tags/%E5%9F%9F/">域<sup>1</sup></a><a href="/tags/%E8%80%83%E7%A0%94/">考研<sup>1</sup></a><a href="/tags/%E6%A0%91/">树<sup>1</sup></a><a href="/tags/%E6%A0%BC/">格<sup>1</sup></a><a href="/tags/%E5%81%8F%E5%BA%8F%E5%85%B3%E7%B3%BB/">偏序关系<sup>1</sup></a><a href="/tags/%E6%9C%80%E5%B0%8F%E4%B8%8A%E7%95%8C/">最小上界<sup>1</sup></a><a href="/tags/%E6%9C%80%E5%A4%A7%E4%B8%8B%E7%95%8C/">最大下界<sup>1</sup></a><a href="/tags/%E5%AF%B9%E5%81%B6%E6%80%A7%E5%8E%9F%E7%90%86/">对偶性原理<sup>1</sup></a><a href="/tags/%E5%93%88%E6%96%AF%E5%9B%BE/">哈斯图<sup>1</sup></a><a href="/tags/%E4%BB%A3%E6%95%B0%E6%A0%BC/">代数格<sup>1</sup></a><a href="/tags/%E5%AD%90%E6%A0%BC/">子格<sup>1</sup></a><a href="/tags/%E5%B0%81%E9%97%AD/">封闭<sup>1</sup></a><a href="/tags/%E6%A0%BC%E5%90%8C%E6%80%81/">格同态<sup>1</sup></a><a href="/tags/%E8%BD%BD%E4%BD%93/">载体<sup>1</sup></a><a href="/tags/%E5%88%86%E9%85%8D%E6%A0%BC/">分配格<sup>1</sup></a><a href="/tags/%E6%9C%89%E7%95%8C%E6%A0%BC/">有界格<sup>1</sup></a><a href="/tags/%E6%9C%89%E8%A1%A5%E6%A0%BC/">有补格<sup>1</sup></a><a href="/tags/%E5%B8%83%E5%B0%94%E6%A0%BC/">布尔格<sup>1</sup></a><a href="/tags/%E6%A8%A1%E6%A0%BC/">模格<sup>1</sup></a><a href="/tags/%E4%BA%94%E8%A7%92%E6%A0%BC/">五角格<sup>1</sup></a><a href="/tags/%E9%92%BB%E7%9F%B3%E6%A0%BC/">钻石格<sup>1</sup></a></div></div></div></div><!-- keyboard--><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav class="show" id="nav"><div id="nav-group"><div id="blog_name"><a id="site-name" href="/" title="返回博客主页"><span class="title">Southeast</span></a></div><div id="page-name-mask"><div id="page-name"><a id="page-name-text" onclick="sco.toTop()">计算机网络综合设计</a></div></div><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><span>首页</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span>文库</span></a><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="solitude  st-folder-fill"></i><span>文章列表</span></a></li><li><a class="site-page child" href="/categories/"><i class="solitude  st-checkbox-multiple-blank-fill"></i><span>全部分类</span></a></li><li><a class="site-page child" href="/tags/"><i class="solitude  st-price-tag-fill"></i><span>全部标签</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span>我的</span></a><ul class="menus_item_child"><li><a class="site-page child" href="/tlink/"><i class="solitude  st-tools-fill"></i><span>工具箱</span></a></li><li><a class="site-page child" href="/music/"><i class="solitude  st-disc-fill"></i><span>音乐馆</span></a></li></ul></div></div></div><div id="nav-left"></div><div id="nav-right"><div class="nav-button" id="search-button"><a class="site-page social-icon search" href="javascript:void(0);" title="搜索"><i class="solitude st-search-line"></i></a></div><div class="nav-button" id="nav-console"><a class="console_switchbutton" onclick="sco.showConsole()" title="中控台" href="javascript:void(0);"><i class="solitude st-dashboard-fill"></i></a></div><div class="nav-button" id="nav-totop" onclick="sco.toTop()"><a class="totopbtn"><i class="solitude st-arrow-up-line"></i><span id="percent">0</span></a></div><div id="toggle-menu"><a class="site-page"><i class="solitude st-menu-line"></i></a></div></div></div></nav><div class="coverdiv" id="coverdiv"><img class="nolazyload" id="post-cover" src="/img/default.avif" alt="计算机网络综合设计"></div><div id="post-info"><div id="post-firstinfo"><div class="meta-firstline"><a class="post-meta-original" title="该文章为原创文章，注意版权协议">原创</a><span class="post-meta-categories"><a class="post-meta-categories" href="/categories/B%E6%B5%8B/">B测</a></span><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E9%9D%99%E6%80%81%E8%B7%AF%E7%94%B1%E9%85%8D%E7%BD%AE/"><span class="tags-name tags-punctuation">静态路由配置</span></a><a class="post-meta__tags" href="/tags/DHCP/"><span class="tags-name tags-punctuation">DHCP</span></a><a class="post-meta__tags" href="/tags/ARP%E5%AE%89%E5%85%A8%E9%85%8D%E7%BD%AE/"><span class="tags-name tags-punctuation">ARP安全配置</span></a></div></div></div></div><h1 class="post-title">计算机网络综合设计</h1><div id="post-meta"><div class="meta-secondline"><span class="post-meta-wordcount"><span class="post-meta-separator"></span></span></div></div></div><section class="main-hero-waves-area waves-area"><svg class="waves-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"></path></defs><g class="parallax"><use href="#gentle-wave" x="48" y="0"></use><use href="#gentle-wave" x="48" y="3"></use><use href="#gentle-wave" x="48" y="5"></use><use href="#gentle-wave" x="48" y="7"></use></g></svg></section></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="一-实验目的"><a class="markdownIt-Anchor" href="#一-实验目的"></a> 一、实验目的</h2>
+<ol>
+<li>
+<p>能够正确配置静态路由，选择合适的设备正确配置实现规定的三个网段，并确保网络的联通性</p>
+</li>
+<li>
+<p>学习交换机端口上行下行限速原理，掌握限速具体配置方法。</p>
+</li>
+<li>
+<p>了解<code>dhcp</code>原理，掌握<code>dhcp</code>配置方法。</p>
+</li>
+<li>
+<p>了解<code>ARP</code>协议，并进行<code>ARP</code>安全配置</p>
+</li>
+</ol>
+<h2 id="二-实验环境"><a class="markdownIt-Anchor" href="#二-实验环境"></a> 二、实验环境</h2>
+<ul>
+<li><code>Windows 10</code>操作系统</li>
+<li><code>VirtualBox 5.2.26</code></li>
+<li><code>WinPcap 4.1.3</code></li>
+<li><code>Wireshark 4.2.3</code></li>
+<li>华为<code>eNSP</code>模拟器</li>
+<li>模拟<code>PC</code> <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>4</mn></mrow><annotation encoding="application/x-tex">4</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">4</span></span></span></span> 台，<code>S5700-28C-HI</code>交换机<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>3</mn></mrow><annotation encoding="application/x-tex">3</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">3</span></span></span></span>台，<code>AR2220</code> 路由器两台</li>
+</ul>
+<h2 id="三-实验基本原理及步骤"><a class="markdownIt-Anchor" href="#三-实验基本原理及步骤"></a> 三、实验基本原理及步骤</h2>
+<h3 id="总拓扑图"><a class="markdownIt-Anchor" href="#总拓扑图"></a> 总拓扑图</h3>
+<p><img src= "/img/loading.avif" data-lazy-src="https://raw.githubusercontent.com/qunhuany/repo-image/main/image/20240427153154.png" alt="" /></p>
+<h3 id="pc相关配置"><a class="markdownIt-Anchor" href="#pc相关配置"></a> PC相关配置</h3>
+<ul>
+<li>
+<p><code>PC1</code>、<code>PC2</code>设置为自动获得<code>IP</code></p>
+<img src= "/img/loading.avif" data-lazy-src="https://raw.githubusercontent.com/qunhuany/repo-image/main/image/20240427151430.png" style="zoom: 67%;" />
+</li>
+<li>
+<p><code>PC3</code>，<code>PC4</code>设置特定网段下固定<code>IP</code></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">PC3</th>
+<th style="text-align:center">PC4</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><img src= "/img/loading.avif" data-lazy-src="https://raw.githubusercontent.com/qunhuany/repo-image/main/image/20240427152041.png" style="zoom:50%;" /></td>
+<td style="text-align:center"><img src= "/img/loading.avif" data-lazy-src="https://raw.githubusercontent.com/qunhuany/repo-image/main/image/20240427152138.png" style="zoom:50%;" /></td>
+</tr>
+</tbody>
+</table>
+</li>
+</ul>
+<h3 id="路由器以及交换机配置"><a class="markdownIt-Anchor" href="#路由器以及交换机配置"></a> 路由器以及交换机配置</h3>
+<ul>
+<li>
+<p>AR1配置</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">sys</span><br><span class="line"></span><br><span class="line">int g0/0/1</span><br><span class="line">ip address 192 .168.5.6524</span><br><span class="line">quit</span><br><span class="line"></span><br><span class="line">ip route-static 192.168.5.0 24 192.168.5.66</span><br><span class="line">ip route-static 192.168.3.0 24 192.168.5.66</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>AR2配置</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">sys </span><br><span class="line"></span><br><span class="line">int g0/0/θ</span><br><span class="line">ip address 192.168.5.67 24</span><br><span class="line">int g0/0/1</span><br><span class="line">ip address 192.168.3.66 24</span><br><span class="line">quit</span><br><span class="line"></span><br><span class="line">ip route-static 192.168.1.0 24 192.168.5.66</span><br><span class="line">ip route-static 192.168.5.0 24 192. 168.5.66</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>LSW2配置</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">sys </span><br><span class="line">vlan 1</span><br><span class="line">int vlanif 1</span><br><span class="line">ip address 192.168.5.66 24</span><br><span class="line"></span><br><span class="line">int g0/0/1</span><br><span class="line">port link-type access</span><br><span class="line">port default vlan 1</span><br><span class="line">int g0/0/2</span><br><span class="line">port link-type access</span><br><span class="line">port default vlan 1</span><br><span class="line">int g0/0/3</span><br><span class="line">port link-type access</span><br><span class="line">port default vlan 1</span><br><span class="line">quit</span><br><span class="line"></span><br><span class="line">ip route-static 192.168.1.0 24 192. 168.5.65</span><br><span class="line">ip route-static 192.168.3.0 24 192.168.5.67</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="交换机端口限速配置"><a class="markdownIt-Anchor" href="#交换机端口限速配置"></a> 交换机端口限速配置：</h3>
+<p>​		配置限速时，需要配置<code>cir cir-value</code>和<code>cbs cbs-value</code>等参数，其中<code>cir cir-value</code>指承诺信息速率，即保证能够通过的平均速率；<code>cbs cbs-value</code>指承诺突发尺寸，即瞬间能够通过的承诺突发流量。例如，用户想要配置限速<code>4Mbit/s</code>，则配置<code>cir-value=4*1024 kbit/s=4096 kbit/s</code>。<code>cbs-value</code>建议配置为<code>cir-value</code>的100–200倍，如果用户没有配置<code>cbs-value</code>，则设备会自动指定其为缺省值。单令牌桶时，<code>cbs-value</code>缺省为<code>cir-value</code>的188倍；双令牌桶时，c<code>bs-value</code>缺省为<code>cir-value</code>的125倍。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#在AR1中配置，端口进出速率均为500000 kbps</span></span><br><span class="line">sys</span><br><span class="line">int g0/0/1</span><br><span class="line">qos lr inbound cir 500000</span><br><span class="line">qos lr outbound cir 500000</span><br></pre></td></tr></table></figure>
+<h3 id="dhcp配置"><a class="markdownIt-Anchor" href="#dhcp配置"></a> <code> dhcp</code>配置</h3>
+<blockquote>
+<p><code>DHCP</code>，全称<code>Dynamic Host Configuration Protocol</code>，中文译作“动态主机配置协议”。<code>DHCP</code>是一个局域网的网络协议，使用UDP协议工作，主要应用于大型局域网络环境中，能够为网络内的终端快速自动分配IP地址，帮助网络管理人员将IP地址和其他IP信息分配给网络中不同终端。<code>DHCP</code>还可以为设备配置正确的子网掩码、默认网关和<code>DNS</code>服务器信息。<code>DHCP</code>的应用使得网络管理者可以集中自动化管理分配<code>IP</code>地址，节省了手动配置花费的时间，工作效率大幅提升，同时能够有效避免手动配置导致的<code>IP</code>重复出错的风险，<code>IP</code>地址精确度有效率得到提升。</p>
+</blockquote>
+<ol>
+<li><code>DHCP</code>工作原理
+<ul>
+<li>客户端发送广播数据包<code>DHCP DISCOVER</code>(包括计算机的名称和MAC地址)。</li>
+<li>服务器收到<code>DISCOVER</code>后，使用<code>DHCP OFFER</code>消息对其进行响应。</li>
+<li>客户端回复<code>DHCP REQUEST</code>，意味着愿意接受<code>DHCP</code>服务器发送的配置。</li>
+<li>获取<code>DHCP REQUEST</code>消息后，<code>DHCP</code>服务器将发送<code>DHCP ACK</code>消息给<code>DHCP</code>客户端，告知<code>DHCP</code>客户端现在可以使用分给它的IP地址。</li>
+</ul>
+</li>
+<li>DHCP配置</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">#在AR1中配置</span><br><span class="line">sys # 进入系统视图</span><br><span class="line">int g0/0/0 # 配置GE 0/0/0端口</span><br><span class="line">ip address 192.168.1.10 24 # 设置端口处IP mask</span><br><span class="line">dhcp enable # 启动DHCP服务</span><br><span class="line">ip pool ggls_p1 # 创建IP池</span><br><span class="line">network 192.168.1.0 mask 24 # 建立网段 网络号 mask</span><br><span class="line">gateway-list 192.168.1.10 # 网关 IP</span><br><span class="line">int g0/0/0 </span><br><span class="line">dhcp select global # 启动分配</span><br></pre></td></tr></table></figure>
+<h3 id="arp相关原理及配置"><a class="markdownIt-Anchor" href="#arp相关原理及配置"></a> ARP相关原理及配置</h3>
+<ol>
+<li>
+<p><code>ARP</code>协议简介</p>
+<p><code>ARP</code>（<code>Address Resolution Protocol</code>，地址解析协议）是一种用于将<code>IP</code>地址解析为<code>MAC</code>地址的协议。在局域网中，主机或网络设备通过<code>ARP</code>协议来获取目标设备的<code>MAC</code>地址，以便进行数据通信。<code>ARP</code>表用于存储<code>IP</code>地址和对应的<code>MAC</code>地址的映射关系。</p>
+</li>
+<li>
+<p><code>ARP</code>欺骗攻击及应对策略</p>
+<ul>
+<li>
+<p><code>ARP</code>欺骗攻击是指攻击者发送伪造的<code>ARP</code>报文，以修改设备或网络内其他用户主机的<code>ARP</code>表项，导致通信异常。为了防范<code>ARP</code>欺骗攻击，我们采取以下策略：</p>
+<ul>
+<li>
+<p><strong>配置ARP报文合法性检查：</strong> 通过检查<code>ARP</code>报文中的源<code>MAC</code>地址是否与以太网数据帧首部中的源<code>MAC</code>地址一致，来判断<code>ARP</code>报文的合法性。如果两者不一致，则丢弃该<code>ARP</code>报文。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sys</span><br><span class="line">arp anti-attack packet-check sender-mac</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p><strong>配置ARP表项固化：</strong> 可以选择使用<code>fixed-mac</code>、<code>fixed-all</code>或<code>send-ack</code>方式来固化<code>ARP</code>表项，以防止<code>ARP</code>欺骗攻击。这些方式可以确保收到的<code>ARP</code>报文与<code>ARP</code>表项中的信息一致，否则将丢弃该<code>ARP</code>报文。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sys</span><br><span class="line">arp anti-attack entry-check [ fixed-mac | fixed-all | send-ack ] <span class="built_in">enable</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><code>ARP</code>泛洪攻击及应对策略</p>
+<ul>
+<li><code>ARP</code>泛洪攻击是指攻击者发送大量的<code>ARP</code>报文，消耗设备的资源，从而影响正常通信。为了应对<code>ARP</code>泛洪攻击，我们采取以下策略：</li>
+</ul>
+<ul>
+<li>
+<p><strong>配置ARP报文限速</strong>： 限制设备处理<code>ARP</code>报文的速率，以保护<code>CPU</code>资源。通过设置限速值，控制设备处理<code>ARP</code>报文的速度。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">int [接口]</span><br><span class="line">arp anti-attack rate-limit <span class="built_in">enable</span> </span><br><span class="line">arp anti-attack rate-limit 80 1</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p><strong>配置ARP Miss消息限速：</strong> 限制设备处理<code>ARP Miss</code>消息的速率，以减少因<code>ARP Miss</code>消息导致的资源消耗。通过限速功能，控制设备生成临时ARP表项的速度。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sys</span><br><span class="line">arp-miss anti-attack rate-limit <span class="built_in">enable</span></span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p><strong>ARP表项严格学习</strong>：为了防止大量<code>ARP</code>报文的滥用和伪造，我们配置<code>ARP</code>表项严格学习功能。只有本设备主动发送的<code>ARP</code>请求应答报文才能触发本设备学习<code>ARP</code>，其他设备发送的<code>ARP</code>报文不能触发本设备学习<code>ARP</code>。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">int [接口]</span><br><span class="line">arp learning strict force-enable</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="四-实验结果"><a class="markdownIt-Anchor" href="#四-实验结果"></a> 四、实验结果</h2>
+<h3 id="网络连通性测试"><a class="markdownIt-Anchor" href="#网络连通性测试"></a> 网络连通性测试</h3>
+<ol>
+<li>
+<p><code>PC1</code>与<code>PC4</code>通信</p>
+<img src= "/img/loading.avif" data-lazy-src="https://raw.githubusercontent.com/qunhuany/repo-image/main/image/20240427154148.png" style="zoom: 67%;" />
+</li>
+<li>
+<p><code>PC3</code>与<code>PC2</code>通信</p>
+<img src= "/img/loading.avif" data-lazy-src="https://raw.githubusercontent.com/qunhuany/repo-image/main/image/20240427154516.png" style="zoom:67%;" />
+</li>
+</ol>
+<h3 id="交换机端口限速结果"><a class="markdownIt-Anchor" href="#交换机端口限速结果"></a> 交换机端口限速结果</h3>
+<img src= "/img/loading.avif" data-lazy-src="https://raw.githubusercontent.com/qunhuany/repo-image/main/image/20240427153429.png" style="zoom:67%;" />
+<p>​		该端口上下行平均速率均为<code>500000kbps</code>，瞬时最高速率为<code>62500000kbps</code>。</p>
+<h3 id="dhcp配置结果"><a class="markdownIt-Anchor" href="#dhcp配置结果"></a> DHCP配置结果</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:center"><img src= "/img/loading.avif" data-lazy-src="https://raw.githubusercontent.com/qunhuany/repo-image/main/image/20240427154653.png" style="zoom:50%;" /></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><img src= "/img/loading.avif" data-lazy-src="https://raw.githubusercontent.com/qunhuany/repo-image/main/image/20240427154751.png" alt="" /></td>
+</tr>
+</tbody>
+</table>
+<p>​		成功创建网段为<code>192.168.1.0 24</code>的<code>ip</code>池，成功开启网关为<code>192.168.1.66 24</code>的<code>DHCP</code>服务，<code>PC1</code>和<code>PC2</code>正确获取到分配的<code>ip</code>地址，可以与其他网段的主机相互连接。</p>
+<h3 id="arp安全配置情况"><a class="markdownIt-Anchor" href="#arp安全配置情况"></a> ARP安全配置情况</h3>
+<p>使用<code>display arp anti-attack configuration all</code>来查看ARP安全配置情况</p>
+<table>
+<thead>
+<tr>
+<th><img src= "/img/loading.avif" data-lazy-src="https://raw.githubusercontent.com/qunhuany/repo-image/main/image/20240427160728.png" style="zoom: 67%;" /></th>
+</tr>
+</thead>
+</table>
+</article><div class="post-copyright"><div class="post-copyright__author_group"><a class="post-copyright__author_img" href="/about/"><img class="post-copyright__author_img_front" src= "/img/loading.avif" data-lazy-src="/img/pwa/favicon.ico"></a><div class="post-copyright__author_name">Linglong</div><div class="post-copyright__author_desc"></div></div><div class="post-tools" id="post-tools"><div class="post-tools-left"><div id="quit-box" onclick="RemoveRewardMask()"></div></div></div><div class="post-copyright__notice"><span class="post-copyright-info">本文是原创文章，采用<a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">CC BY-NC-SA 4.0</a>协议，完整转载请注明来自<a href="/">Linglong</a></span></div></div><div class="post-tools-right"><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E9%9D%99%E6%80%81%E8%B7%AF%E7%94%B1%E9%85%8D%E7%BD%AE/"><span class="tags-punctuation"></span>静态路由配置<span class="tagsPageCount">1</span></a><a class="post-meta__tags" href="/tags/DHCP/"><span class="tags-punctuation"></span>DHCP<span class="tagsPageCount">1</span></a><a class="post-meta__tags" href="/tags/ARP%E5%AE%89%E5%85%A8%E9%85%8D%E7%BD%AE/"><span class="tags-punctuation"></span>ARP安全配置<span class="tagsPageCount">1</span></a></div></div></div><nav class="needEndHide pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2024/07/06/DH+SM4%E5%AE%9E%E7%8E%B0txt%E5%8A%A0%E8%A7%A3%E5%AF%86/"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">DH密钥协商与SM4结合实现TXT文件加密与解密</div></div></a></div><div class="next-post pull-right"><a href="/2024/05/11/%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE%E5%90%88%E9%9B%86/"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">思维导图合集</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-content"><div class="card-info-avatar is-center"><div class="author-info__top-group"><div class="author-info__sayhi" id="author-info__sayhi" onclick="sco.changeSayHelloText()">sayhello.morning</div></div></div><div class="avatar-img-group"><img class="avatar-img" alt="头像" src= "/img/loading.avif" data-lazy-src="/img/avatar.avif"><div class="avatar-sticker"><img class="avatar-sticker-img" src= "/img/loading.avif" data-lazy-src="https://7.isyangs.cn/34/65f2e4e0423cc-34.png" alt="心情贴纸"></div></div><div class="author-info__description_group"><div class="author-info__description">分享自己对编程的<b>热爱</b>，对美好生活的<b>向往</b>，对知识海洋<b>探索历程</b>。</div><div class="author-info__description2">相信你可以在这里找到对你有用的知识和教程。</div></div><div class="author-info__bottom-group"><a class="author-info__bottom-group-left" href="/about/"><div class="author-info__name">Southeast</div><div class="author-info__desc"></div></a><div class="card-info-social-icons is-center"></div></div></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="solitude st-menu-line"></i><span>文章目录</span></div><div class="toc-content" id="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80-%E5%AE%9E%E9%AA%8C%E7%9B%AE%E7%9A%84"><span class="toc-text"> 一、实验目的</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C-%E5%AE%9E%E9%AA%8C%E7%8E%AF%E5%A2%83"><span class="toc-text"> 二、实验环境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89-%E5%AE%9E%E9%AA%8C%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86%E5%8F%8A%E6%AD%A5%E9%AA%A4"><span class="toc-text"> 三、实验基本原理及步骤</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E6%8B%93%E6%89%91%E5%9B%BE"><span class="toc-text"> 总拓扑图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#pc%E7%9B%B8%E5%85%B3%E9%85%8D%E7%BD%AE"><span class="toc-text"> PC相关配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B7%AF%E7%94%B1%E5%99%A8%E4%BB%A5%E5%8F%8A%E4%BA%A4%E6%8D%A2%E6%9C%BA%E9%85%8D%E7%BD%AE"><span class="toc-text"> 路由器以及交换机配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%A4%E6%8D%A2%E6%9C%BA%E7%AB%AF%E5%8F%A3%E9%99%90%E9%80%9F%E9%85%8D%E7%BD%AE"><span class="toc-text"> 交换机端口限速配置：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#dhcp%E9%85%8D%E7%BD%AE"><span class="toc-text">  dhcp配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#arp%E7%9B%B8%E5%85%B3%E5%8E%9F%E7%90%86%E5%8F%8A%E9%85%8D%E7%BD%AE"><span class="toc-text"> ARP相关原理及配置</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B-%E5%AE%9E%E9%AA%8C%E7%BB%93%E6%9E%9C"><span class="toc-text"> 四、实验结果</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BD%91%E7%BB%9C%E8%BF%9E%E9%80%9A%E6%80%A7%E6%B5%8B%E8%AF%95"><span class="toc-text"> 网络连通性测试</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%A4%E6%8D%A2%E6%9C%BA%E7%AB%AF%E5%8F%A3%E9%99%90%E9%80%9F%E7%BB%93%E6%9E%9C"><span class="toc-text"> 交换机端口限速结果</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#dhcp%E9%85%8D%E7%BD%AE%E7%BB%93%E6%9E%9C"><span class="toc-text"> DHCP配置结果</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#arp%E5%AE%89%E5%85%A8%E9%85%8D%E7%BD%AE%E6%83%85%E5%86%B5"><span class="toc-text"> ARP安全配置情况</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="solitude st-map-line"></i><span>最近发布</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2024/07/06/%E6%AF%8F%E6%97%A5%E9%98%85%E8%AF%BB/" title="每日阅读"><img alt="每日阅读" src= "/img/loading.avif" data-lazy-src="/img/default.avif"></a><div class="content"><a class="title" href="/2024/07/06/%E6%AF%8F%E6%97%A5%E9%98%85%E8%AF%BB/" title="每日阅读">每日阅读</a><a class="article-recent_post_categories" href="/2024/07/06/%E6%AF%8F%E6%97%A5%E9%98%85%E8%AF%BB/">English</a></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/07/06/%E6%A0%91%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/" title="树的基本概念"><img alt="树的基本概念" src= "/img/loading.avif" data-lazy-src="/img/default.avif"></a><div class="content"><a class="title" href="/2024/07/06/%E6%A0%91%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/" title="树的基本概念">树的基本概念</a><a class="article-recent_post_categories" href="/2024/07/06/%E6%A0%91%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/">数据结构</a></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/07/06/%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E6%A6%82%E5%BF%B5/" title="二叉树的概念"><img alt="二叉树的概念" src= "/img/loading.avif" data-lazy-src="/img/default.avif"></a><div class="content"><a class="title" href="/2024/07/06/%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E6%A6%82%E5%BF%B5/" title="二叉树的概念">二叉树的概念</a><a class="article-recent_post_categories" href="/2024/07/06/%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E6%A6%82%E5%BF%B5/">数据结构</a></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/07/06/DH+SM4%E5%AE%9E%E7%8E%B0txt%E5%8A%A0%E8%A7%A3%E5%AF%86/" title="DH密钥协商与SM4结合实现TXT文件加密与解密"><img alt="DH密钥协商与SM4结合实现TXT文件加密与解密" src= "/img/loading.avif" data-lazy-src="/img/default.avif"></a><div class="content"><a class="title" href="/2024/07/06/DH+SM4%E5%AE%9E%E7%8E%B0txt%E5%8A%A0%E8%A7%A3%E5%AF%86/" title="DH密钥协商与SM4结合实现TXT文件加密与解密">DH密钥协商与SM4结合实现TXT文件加密与解密</a><a class="article-recent_post_categories" href="/2024/07/06/DH+SM4%E5%AE%9E%E7%8E%B0txt%E5%8A%A0%E8%A7%A3%E5%AF%86/">sevurity</a></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/07/06/B%E6%B5%8B%E2%80%94%E2%80%94%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%BB%BC%E5%90%88%E8%AE%BE%E8%AE%A1/" title="计算机网络综合设计"><img alt="计算机网络综合设计" src= "/img/loading.avif" data-lazy-src="/img/default.avif"></a><div class="content"><a class="title" href="/2024/07/06/B%E6%B5%8B%E2%80%94%E2%80%94%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%BB%BC%E5%90%88%E8%AE%BE%E8%AE%A1/" title="计算机网络综合设计">计算机网络综合设计</a><a class="article-recent_post_categories" href="/2024/07/06/B%E6%B5%8B%E2%80%94%E2%80%94%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%BB%BC%E5%90%88%E8%AE%BE%E8%AE%A1/">B测</a></div></div></div></div></div></div></main><footer id="footer"><div id="st-footer-bar"><div class="footer-logo"><span>Southeast</span></div><div class="footer-bar-description">来自 Southeast 的文章</div><a class="footer-bar-link" href="/about/">了解更多</a></div><div id="footer_deal"></div><div id="st-footer"></div><div id="footer-bar"><div class="footer-bar-links"><div class="footer-bar-left"><div class="copyright">© 2024 By&nbsp;<a class="footer-bar-link" href="/">Southeast</a></div></div><div class="footer-bar-right"><a class="footer-bar-link" href="/null"></a><a class="footer-bar-link cc" href="/null" aria-label="copyright"><i class="solitude st-copyright-line"></i><i class="solitude st-creative-commons-by-line"></i><i class="solitude st-creative-commons-nc-line"></i><i class="solitude st-creative-commons-nd-line"></i></a></div></div></div></footer></div><!-- right_menu--><div id="rightMenu"><div class="rightMenu-group rightMenu-small"><div class="rightMenu-item" id="menu-backward"><i class="solitude st-arrow-left-line"></i></div><div class="rightMenu-item" id="menu-forward"><i class="solitude st-arrow-right-line"></i></div><div class="rightMenu-item" id="menu-refresh"><i class="solitude st-restart-line"></i></div><div class="rightMenu-item" id="menu-top"><i class="solitude st-arrow-up-line"></i></div></div><div class="rightMenu-group rightMenu-line rightMenuPlugin"><div class="rightMenu-item" id="menu-copytext"><i class="solitude st-copy-fill"></i><span>复制选中文本</span></div><div class="rightMenu-item" id="menu-pastetext"><i class="solitude st-clipboard-fill"></i><span>粘贴文本</span></div><div class="rightMenu-item" id="menu-newwindow"><i class="solitude st-window-fill"></i><span>新窗口打开</span></div><div class="rightMenu-item" id="menu-copylink"><i class="solitude st-link-line"></i><span>复制链接地址</span></div><div class="rightMenu-item" id="menu-copyimg"><i class="solitude st-copy-fill"></i><span>复制此图片</span></div><div class="rightMenu-item" id="menu-downloadimg"><i class="solitude st-download-cloud-fill"></i><span>下载此图片</span></div><div class="rightMenu-item" id="menu-search"><i class="solitude st-search-line"></i><span>站内搜索</span></div><div class="rightMenu-item" id="menu-music-toggle"><i class="solitude st-play-fill"></i><span>播放音乐</span></div><div class="rightMenu-item" id="menu-music-back"><i class="solitude st-skip-back-fill"></i><span>切换到上一首</span></div><div class="rightMenu-item" id="menu-music-forward"><i class="solitude st-skip-forward-fill"></i><span>切换到下一首</span></div><div class="rightMenu-item" id="menu-music-copyMusicName"><i class="solitude st-copy-fill"></i><span>复制歌名</span></div></div><div class="rightMenu-group rightMenu-line rightMenuOther"><div class="rightMenu-item" id="menu-randomPost" onclick="toRandomPost()||rm.hideRightMenu()"><i class="solitude st-signal-tower-fill"></i><span>随机短文</span></div><div class="rightMenu-item" onclick="pjax.loadUrl('/categories/')||rm.hideRightMenu()"><i class="solitude st-checkbox-multiple-blank-fill"></i><span>全部分类</span></div><div class="rightMenu-item" onclick="pjax.loadUrl('/tags/')||rm.hideRightMenu()"><i class="solitude st-price-tag-fill"></i><span>全部标签</span></div></div><div class="rightMenu-group rightMenu-line rightMenuOther"><div class="rightMenu-item" id="menu-darkmode" onclick="sco.switchDarkMode()"><i class="solitude st-moon-clear-fill"></i><span class="menu-darkmode-text">深色模式</span></div></div></div><div id="rightmenu-mask"></div><!-- inject body--><div><script src="/js/utils.js?v=1.12.2"></script><script src="/js/main.js?v=1.12.2"></script><script src="/js/third_party/waterfall.min.js?v=1.12.2"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/pjax/0.2.8/pjax.min.js"></script><script src="/js/third_party/universe.min.js?v=1.12.2"></script><script>dark()
+</script><script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-lazyload/19.1.3/lazyload.iife.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/node-snackbar/0.1.16/snackbar.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.36/fancybox/fancybox.umd.min.js"></script><script>var meting_api = 'https://meting.qjqq.cn/?server=:server&type=:type&id=:id&auth=:auth&r=:r';</script><script src="https://cdnjs.cloudflare.com/ajax/libs/aplayer/1.10.1/APlayer.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/meting/2.0.1/Meting.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js"></script><script src="/js/right_menu.js?v=1.12.2"></script><div class="js-pjax"></div></div><!-- pjax--><script>const pjax = new Pjax({
+    elements: 'a:not([target="_blank"])',
+    selectors: ['title','#body-wrap','#site-config','meta[name="description"]','.js-pjax','meta[property^="og:"]','#config-diff'],
+    cacheBust: false,
+    analytics: false,
+    scrollRestoration: false
+})
+
+document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+})
+
+document.addEventListener('pjax:complete', () => {
+    window.refreshFn()
+
+    document.querySelectorAll('script[data-pjax]').forEach(item => {
+        const newScript = document.createElement('script')
+        const content = item.text || item.textContent || item.innerHTML || ""
+        Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+        newScript.appendChild(document.createTextNode(content))
+        item.parentNode.replaceChild(newScript, item)
+    })
+
+    GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+})
+
+document.addEventListener('pjax:error', (e) => {
+    if (e.request.status === 404) {
+        pjax.loadUrl('/404.html')
+    }
+})</script><!-- theme--><script>initTheme = () => {
+    let isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+    const cachedMode = utils.saveToLocal.get('theme');
+    if (cachedMode === undefined) {
+        const nowMode =
+            isDarkMode ? 'dark' : 'light'
+        document.documentElement.setAttribute('data-theme', nowMode);
+    } else {
+        document.documentElement.setAttribute('data-theme', cachedMode);
+    }
+    typeof rm === 'object' && rm.mode(cachedMode === 'dark' && isDarkMode)
+}
+initTheme()</script><!-- google adsense--><!-- search--><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><button class="search-close-button"><i class="solitude st-close-fill"></i></button></nav><div class="search-wrap"><div class="search-box"><input class="search-box-input" id="search-input" type="text" autocomplete="off" spellcheck="false" autocorrect="off" autocapitalize="off" placeholder="输入关键词快速查找"></div><div id="search-results"><div id="search-hits"></div></div><div id="search-pagination"></div><div id="search-tips"></div></div></div><div id="search-mask"></div></div><script src="/js/search/local.js?v=1.12.2"></script><!-- Tianli-Talk--><!-- music--><div class="needEndHide" id="nav-music" onclick="sco.musicToggle()"><div id="nav-music-hoverTips">音乐已暂停</div><meting-js id="8407304077" server="netease" type="playlist" mutex="true" preload="none" data-lrctype="0" order="random" theme="var(--efu-main)"></meting-js></div></body></html><script>const posts=["2024/07/06/每日阅读/","2024/07/06/树的基本概念/","2024/07/06/二叉树的概念/","2024/07/06/DH+SM4实现txt加解密/","2024/07/06/B测——计算机网络综合设计/","2024/05/11/思维导图合集/","2024/04/27/03 单链表/","2024/04/27/02顺序表——动态分配版/","2024/04/27/01顺序表——静态分配版/","2024/04/14/格与布尔代数/","2024/04/14/代数部分/","2024/04/12/辗转相除法证明/"];function toRandomPost(){ pjax.loadUrl('/'+posts[Math.floor(Math.random()*posts.length)]); }</script>
